@@ -39,6 +39,29 @@
   transition: background-image 0.3s ease;
 }
 
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
 .profile-picture {
   width: 200px;
   height: 200px;
