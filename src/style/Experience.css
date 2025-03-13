@@ -1,5 +1,5 @@
 .experience-section {
-    padding: 4rem 2rem;
+    padding: 4rem 1rem;
     background-color: var(--background-color);
 }
 
@@ -16,35 +16,70 @@
 }
 
 .experience-container {
-    max-width: 1200px;
+    max-width: 1500px;  /* Increased from 1200px */
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1rem;  /* Increased gap */
     justify-content: center;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
-.experience-card {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    flex: 1 1 400px;
-    max-width: 500px;
-    min-width: 300px;
+.card-content {
+    display: flex;
+    padding: 1rem;
+    gap: 2rem;
+    align-items: flex-start;
 }
 
-/* ...existing code... */
+.logo-container {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.company-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.content-container {
+    flex: 1;
+}
 
 .experience-card:hover {
     transform: translateY(-5px);
 }
 
-.experience-header {
-    margin-bottom: 1rem;
+@media (max-width: 768px) {
+    .card-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .logo-container {
+        width: 80px;
+        height: 80px;
+    }
+
+    .content-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .experience-info {
+        margin-left: 65px;
+    }
 }
 
 .role {
@@ -69,18 +104,12 @@
     color: #666;
 }
 
-.description {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    margin: 1rem 0;
-}
-
 .skills {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 1rem;
+    justify-content: center;
 }
 
 .skill-pill {
@@ -94,11 +123,124 @@
 }
 
 @media (max-width: 768px) {
-    .experience-section {
-        padding: 2rem 1rem;
+    .experience-card {
+        flex: 1 1 100%;
+        min-width: 300px;
+        padding: 1.5rem;
     }
     
-    .section-title {
-        font-size: 2rem;
+    .experience-container {
+        padding: 0 0.5rem;
     }
+}
+
+.experience-card-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+    flex: 1 1 600px;  /* Move flex properties from .experience-card to wrapper */
+    max-width: 600px;
+    min-width: 400px;
+    z-index: 1;
+}
+
+.experience-card-wrapper:has(.detailed-card.active) {
+    z-index: 10;
+}
+
+.detailed-card {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.detailed-card.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.detailed-content {
+    padding: 24px;
+}
+
+.detailed-header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.detailed-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.detailed-title h2 {
+    font-size: 1.4rem;
+    margin: 0;
+    color: #333;
+}
+
+.detailed-title h3 {
+    font-size: 1.1rem;
+    margin: 4px 0;
+    color: #666;
+}
+
+.detailed-period {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0;
+}
+
+.detailed-description {
+    margin: 16px 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+.detailed-skills h4 {
+    margin: 0 0 12px 0;
+    color: #333;
+}
+
+.detailed-skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.detailed-skill-pill {
+    background: #f0f0f0;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Ensure the experience card has a white background */
+.experience-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+    /* Remove flex properties from here */
+    width: 100%;  /* Add this to ensure card fills wrapper */
+}
+
+
+/* Add hover state */
+.experience-card:hover {
+    transform: translateY(0px);
+    transition: transform 0.3s ease-in-out;
 }

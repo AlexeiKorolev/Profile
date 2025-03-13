@@ -8,7 +8,7 @@ const About = () => {
             <div className="about-container">
                 <div className="profile-image-container">
                     <img 
-                        src="https://avatars.githubusercontent.com/u/10978757?v=4" 
+                        src="https://avatars.githubusercontent.com/u/10978757?v=3" 
                         alt="Alexei Korolev" 
                         className="profile-image"
                     />

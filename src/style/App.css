@@ -1,9 +1,12 @@
 :root {
-  --primary-color: #CCA162;
-  --secondary-color: #91C6F5;
+  --primary-color: #b92b27;
+  --secondary-color: #1565C0;
+  --primary-neutral: #D3B8A5;
+  --secondary-neutral: #AD8874;
   --accent-color: #CC6762;
   --background-color: #E9D7C7;
   --text-color: #333333;
+  --cursor-color: #333333;
 }
 
 .App {
@@ -26,7 +29,7 @@
 
 .title {
   font-family: 'Poppins', sans-serif;
-  font-size: 10vw;
+  font-size: 7vw;
   font-weight: 700;
   text-align: center;
   margin-bottom: 2rem;
@@ -41,7 +44,7 @@
 
 .subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 1.5rem;
+  font-size: 3.5rem;
   color: var(--text-color);
   height: 2rem;
   display: flex;
@@ -93,5 +96,176 @@
   to {
       opacity: 1;
       transform: translateY(0);
+  }
+}
+
+
+.shape {
+  position: absolute;
+  border-radius: 100%;
+}
+
+.shape1 {
+  width: 20vw;
+  height: 20vw;
+  top: 15%;
+  left: -10vw;
+  background-color: var(--primary-neutral);
+  animation: moveShape1 20s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.shape2 {
+  width: 5vw;
+  height: 5vw;
+  top: 35%;
+  left: 15vw;
+  background-color: #BFA699;
+  animation: moveShape2 20s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.shape3 {
+  width: 10vw;
+  height: 10vw;
+  top: 50%;
+  left: 80vw;
+  background-color: var(--secondary-neutral);
+  animation: moveShape3 20s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.shape4 {
+  width: 15vw;
+  height: 15vw;
+  top: 70%;
+  left: -5vw;
+  background-color: #C9AEA6;
+  animation: moveShape4 20s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.shape5 {
+  width: 15vw;
+  height: 15vw;
+  top: 5%;
+  right: 5vw;
+  background-color: #B2958B;
+  animation: moveShape5 20s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+@keyframes moveShape5 {
+  0% {
+    right: 5vw;
+    top: 5%;
+  }
+  20% {
+    right: 7.5vw;
+    top: 8%;
+  }
+  40% {
+    right: 10vw;
+    top: 5%;
+  }
+  60% {
+    right: 7.5vw;
+    top: 2%;
+  }
+  80% {
+    right: 5vw;
+    top: 5%;
+  }
+  100% {
+    right: 5vw;
+    top: 5%;
+  }
+}
+
+@keyframes moveShape4 {
+  0% {
+    left: -5vw;
+    top: 70%;
+  }
+  45% {
+    left: -7.5vw;
+    top: 66%;
+  }
+  70% {
+    left: -10vw;
+    top: 70%;
+  }
+  85% {
+    left: -7.5vw;
+    top: 74%;
+  }
+  100% {
+    left: -5vw;
+    top: 70%;
+  }
+}
+
+
+@keyframes moveShape3 {
+  0% {
+    left: 80vw;
+    top: 50%;
+  }
+  25% {
+    left: 82.5vw;
+    top: 54%;
+  }
+  50% {
+    left: 85vw;
+    top: 50%;
+  }
+  75% {
+    left: 82.5vw;
+    top: 46%;
+  }
+  100% {
+    left: 80vw;
+    top: 50%;
+  }
+}
+
+@keyframes moveShape2 {
+  0% {
+    left: 15vw;
+    top: 35%;
+  }
+  15% {
+    left: 12.5vw;
+    top: 39%;
+  }
+  30% {
+    left: 10vw;
+    top: 35%;
+  }
+  55% {
+    left: 12.5vw;
+    top: 31%;
+  }
+  100% {
+    left: 15vw;
+    top: 35%;
+  }
+}
+
+@keyframes moveShape1 {
+  0% {
+    left: -10vw;
+    top: 15%;
+  }
+  25% {
+    left: -7.5vw;
+    top: 19%;
+  }
+  50% {
+    left: -5vw;
+    top: 15%;
+  }
+  75% {
+    left: -7.5vw;
+    top: 11%;
+  }
+  100% {
+    left: -10vw;
+    top: 15%;
   }
 }

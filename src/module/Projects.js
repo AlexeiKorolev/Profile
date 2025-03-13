@@ -56,6 +56,30 @@ const Projects = () => {
                 details: "/projects/ai-analytics"
             }
         },
+        {
+            title: "AI Analytics Platform",
+            description: "A full-stack application providing real-time analytics and predictive insights using machine learning algorithms.",
+            image: "/path/to/project1-image.jpg",
+            skills: ["React", "Python", "TensorFlow", "AWS", "Node.js"],
+            links: {
+                github: "https://github.com/username/project1",
+                website: "https://project1.com",
+                video: "https://youtube.com/demo1",
+                details: "/projects/ai-analytics"
+            }
+        },
+        {
+            title: "AI Analytics Platform",
+            description: "A full-stack application providing real-time analytics and predictive insights using machine learning algorithms.",
+            image: "/path/to/project1-image.jpg",
+            skills: ["React", "Python", "TensorFlow", "AWS", "Node.js"],
+            links: {
+                github: "https://github.com/username/project1",
+                website: "https://project1.com",
+                video: "https://youtube.com/demo1",
+                details: "/projects/ai-analytics"
+            }
+        },
         // Add more projects...
     ];
     return (
