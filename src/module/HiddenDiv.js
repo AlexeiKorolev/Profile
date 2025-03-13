@@ -6,8 +6,8 @@ const HiddenDiv = ({ children, positionX, positionY, threshold = 200 }) => {
   useEffect(() => {
     const handleMouseMove = (event) => {
       const distance = Math.sqrt(
-        Math.pow(event.clientX - positionX, 2) + 
-        Math.pow(event.clientY - positionY, 2)
+        Math.pow(event.clientX - (positionX * window.innerWidth / 100), 2) + 
+        Math.pow(event.clientY - (positionY * window.innerHeight / 100), 2)
       );
       
       // Calculate opacity based on distance
@@ -24,13 +24,16 @@ const HiddenDiv = ({ children, positionX, positionY, threshold = 200 }) => {
   return (
     <div
       style={{
-        position: 'absolute',
-        left: positionX,
-        top: positionY,
+        position: 'absolute', // Changed from 'absolute' to 'fixed'
+        left: positionX + '%',
+        top: positionY + '%',
         opacity: opacity,
         transition: 'opacity 0.2s ease-in-out',
         pointerEvents: 'none',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        overflow: 'hidden', // Prevent internal scrolling
+        height: 'auto', // Allow content to determine size
+        width: 'auto'  // Allow content to determine size
       }}
     >
       {children}
