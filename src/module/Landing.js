@@ -95,13 +95,14 @@ const Landing = () => {
             />
             </HiddenDiv>
 
-            <HiddenDiv positionX={80} positionY={70} threshold={400}>
-            <LaTeXTyping 
-                equations={customEquations3}
-                typingSpeed={5}
-                deletingSpeed={5}
-                pauseDuration={2000}
-            />
+            <HiddenDiv positionX={30} positionY={70} threshold={400}>
+            <CodeTyping 
+                    phrases={customPhrases}
+                    language="javascript"
+                    typingSpeed={50}
+                    deletingSpeed={5}
+                    pauseDuration={2000}
+                />
             </HiddenDiv>
 
             <HiddenDiv positionX={80} positionY={40} threshold={400}>

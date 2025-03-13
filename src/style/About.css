@@ -81,3 +81,63 @@
         width: 250px;
     }
 }
+
+.greeting {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.profile-image-container {
+    flex: 0 0 300px;
+}
+
+.profile-image {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+.education-logos {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.edu-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.edu-logo:hover {
+    opacity: 1;
+}
+
+.edu-logo.princeton {
+    height: 70px; /* Slightly larger for the main institution */
+}

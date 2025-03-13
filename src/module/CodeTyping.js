@@ -26,7 +26,7 @@ print(result)`
 }) => {
     const codeRef = useRef(null);
     
-    const typedText = useTypingEffect(phrases, typingSpeed, deletingSpeed, pauseDuration);
+    const typedText = phrases[0]//useTypingEffect(phrases, typingSpeed, deletingSpeed, pauseDuration);
 
     useEffect(() => {
       if (codeRef.current) {

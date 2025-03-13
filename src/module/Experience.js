@@ -9,8 +9,7 @@ const ExperienceCard = ({ role, company, period, description, skills, logo }) =>
         threshold: 0.2,
         triggerOnce: true
     });
-
-
+    
     return (
         <div ref={ref} className={`experience-card-wrapper ${inView ? 'visible' : ''}`}>
             <div 
