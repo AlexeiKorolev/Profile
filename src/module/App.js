@@ -7,6 +7,8 @@ import Projects from './Projects';
 import AnimatedCursor from "react-animated-cursor";
 import FollowingShapes from './FollowingShapes';
 import React, { useState, useEffect, useRef } from 'react';
+import { HashRouter as Router } from 'react-router-dom';  // Changed import
+
 
 
 function App() {
@@ -66,6 +68,7 @@ function App() {
   }, []);*/
 
   return (
+    <Router basename="/Profile">
     <div>
       <Navbar />
       <header>
@@ -90,6 +93,7 @@ function App() {
         </div>
       </header>
     </div>
+    </Router>
   );
 }
 

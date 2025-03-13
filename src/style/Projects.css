@@ -48,7 +48,7 @@
     padding: 2rem 2rem 1rem;
     background: linear-gradient(
         transparent,
-        rgba(233, 215, 199, 0.9) 20%
+        var(--transparent-background) 20%
     );
     color: var(--text-color);
     transition: transform 0.3s ease;

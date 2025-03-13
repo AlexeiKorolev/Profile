@@ -4,7 +4,8 @@
   --primary-neutral: #D3B8A5;
   --secondary-neutral: #AD8874;
   --accent-color: #CC6762;
-  --background-color: #E9D7C7;
+  --background-color: #EDEAE0;
+  --transparent-background: rgba(237, 234, 224, 0.8);
   --text-color: #333333;
   --cursor-color: #333333;
   overflow-x: hidden;
@@ -47,7 +48,7 @@
 
 .subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 3.5rem;
+  font-size: 3vw;
   color: var(--text-color);
   height: 2rem;
   display: flex;
@@ -113,7 +114,7 @@
   height: 20vw;
   top: 15%;
   left: -10vw;
-  background-color: var(--primary-neutral);
+  background-color: #e5dcd0;
   animation: moveShape1 20s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
@@ -122,7 +123,7 @@
   height: 5vw;
   top: 35%;
   left: 15vw;
-  background-color: #BFA699;
+  background-color: #DFD3C3;
   animation: moveShape2 20s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
@@ -131,7 +132,7 @@
   height: 10vw;
   top: 50%;
   left: 80vw;
-  background-color: var(--secondary-neutral);
+  background-color: #D8D4CB;
   animation: moveShape3 20s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
@@ -140,7 +141,7 @@
   height: 15vw;
   top: 70%;
   left: -5vw;
-  background-color: #C9AEA6;
+  background-color: #D1C7B8;
   animation: moveShape4 20s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
@@ -149,7 +150,7 @@
   height: 15vw;
   top: 5%;
   right: 5vw;
-  background-color: #B2958B;
+  background-color: #C0B2A2;
   animation: moveShape5 20s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
