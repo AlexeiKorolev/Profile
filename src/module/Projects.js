@@ -17,6 +17,7 @@ const ProjectCard = ({ title, description, image, video, skills, links }) => {
             style={backgroundStyle}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            id="projects"
         >
             {video && isHovered && (
                 <video
@@ -85,7 +86,7 @@ const Projects = () => {
             skills: ["Python", "NLP", "Machine Learning", "Research", "Data Analysis"],
             video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
             links: {
-                github: "https://github.com/username/project1",
+                github: "https://github.com/AlexeiKorolev/NLP-Phonetic-Sentiment",
             }
             
         }

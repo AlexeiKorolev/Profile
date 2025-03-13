@@ -23,24 +23,8 @@ const About = () => {
     });
 
     return (
-        <section className="about-section">
-            <HiddenDiv positionX={30} positionY={300} threshold={THREASH}>
-            <LaTeXTyping 
-                equation={customEquations[0]}
-                typingSpeed={5}
-                deletingSpeed={5}
-                pauseDuration={2000}
-            />
-            </HiddenDiv>
-
-            <HiddenDiv positionX={50} positionY={25} threshold={THREASH}>
-            <LaTeXTyping 
-                equation={customEquations[1]}
-                typingSpeed={5}
-                deletingSpeed={5}
-                pauseDuration={2000}
-            />
-            </HiddenDiv>
+        <section className="about-section" id="about">
+            
             <div className="about-container">
                 <div 
                     ref={profileRef}
@@ -60,7 +44,7 @@ const About = () => {
                         Hi, nice to meet you! 👋
                     </h2>
                     <p className="about-text">
-                        I'm a Computer Science student at Princeton University minoring in Statistics & Machine Learning. I build cool things.
+                        I'm a Computer Science student at Princeton University minoring in Statistics & Machine Learning. I build cool things. 
                     </p>
                     <div className="education-logos">
                         <img src={princetonLogo} alt="Princeton University" className="edu-logo princeton" />

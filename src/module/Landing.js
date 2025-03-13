@@ -11,7 +11,7 @@ const Landing = () => {
     const typedText = useTypingEffect(phrases, 100, 50, 2000);
 
     return (
-        <div className="landing-container">
+        <div className="landing-container" id="landing">
             <div ref={titleRef} className="title">Alexei Korolev</div>
             <div className="subtitle">{typedText}<span className="cursor">|</span></div>
             <HiddenDiv positionX={30} positionY={30} threshold={THREASH}>

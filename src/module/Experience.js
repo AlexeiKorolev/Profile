@@ -153,11 +153,21 @@ const Experience = () => {
             detailedSkills: ["Python", "Education", "Curriculum Design", "Lesson Planning", "Student Engagement", "Classroom Management"],
 
             logo: "https://www.codeninjas.com/hubfs/Group%201.svg"
+        } ,
+        {
+            role: "AI Researcher",
+            company: "Rutgers Unviersity - GSET",
+            period: "Summer 2022",
+            description: "Co-authored an IEEE research paper investigating a novel AI application in mobile device security. Led the AI model development of the project, engineering models that achieved >92.5% accuracy without overfitting. Designed a MATLAB program to extrapolate unique statistical properties of structure-borne sound recordings.",
+            skills: ["MATLAB", "Python", "Machine Learning"],
+            detailedSkills: ["MATLAB", "Python", "Machine Learning", "Signal Processing", "Research", "Feature Engineering", "Structure-borne Sound"],
+
+            logo: "https://media.licdn.com/dms/image/v2/C4E0BAQHWA2B8LSUgqA/company-logo_200_200/company-logo_200_200/0/1630570927509/new_jersey_governor_s_school_of_engineering_technology_logo?e=2147483647&v=beta&t=zs4LorrPf7tuKb5OGljXPC2JIJ1Y6zP1XoMf9XOEh9A"
         }
     ];
 
     return (
-        <section className="experience-section">
+        <section className="experience-section" id="experience">
         
             <h2 className="section-title">Recent Work Experience</h2>
             <div className="experience-container">
