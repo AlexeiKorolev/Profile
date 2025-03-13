@@ -7,6 +7,7 @@ import LaTeXTyping from './LaTeXTyping';
 
 
 const Landing = () => {
+    const THREASH = 200;
     const titleRef = useRef(null);
     const phrases = [
         "Data Scientist",
@@ -68,7 +69,7 @@ const Landing = () => {
         <div className="landing-container">
             <div ref={titleRef} className="title">Alexei Korolev</div>
             <div className="subtitle">{typedText}<span className="cursor">|</span></div>
-            <HiddenDiv positionX={30} positionY={30} threshold={400}>
+            <HiddenDiv positionX={30} positionY={30} threshold={THREASH}>
             <LaTeXTyping 
                 equations={customEquations1}
                 typingSpeed={5}
@@ -77,7 +78,7 @@ const Landing = () => {
             />
             </HiddenDiv>
 
-            <HiddenDiv positionX={50} positionY={25} threshold={400}>
+            <HiddenDiv positionX={50} positionY={25} threshold={THREASH}>
             <LaTeXTyping 
                 equations={customEquations2}
                 typingSpeed={5}
@@ -86,7 +87,7 @@ const Landing = () => {
             />
             </HiddenDiv>
 
-            <HiddenDiv positionX={50} positionY={70} threshold={400}>
+            <HiddenDiv positionX={50} positionY={70} threshold={THREASH}>
             <LaTeXTyping 
                 equations={customEquations3}
                 typingSpeed={5}
@@ -95,7 +96,7 @@ const Landing = () => {
             />
             </HiddenDiv>
 
-            <HiddenDiv positionX={30} positionY={70} threshold={400}>
+            <HiddenDiv positionX={30} positionY={70} threshold={THREASH}>
             <CodeTyping 
                     phrases={customPhrases}
                     language="javascript"
@@ -105,7 +106,7 @@ const Landing = () => {
                 />
             </HiddenDiv>
 
-            <HiddenDiv positionX={80} positionY={40} threshold={400}>
+            <HiddenDiv positionX={80} positionY={40} threshold={THREASH}>
             <CodeTyping 
                     phrases={customPhrases}
                     language="javascript"

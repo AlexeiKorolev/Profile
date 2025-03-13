@@ -6,8 +6,8 @@ const HiddenDiv = ({ children, positionX, positionY, threshold = 200 }) => {
   useEffect(() => {
     const handleMouseMove = (event) => {
       const distance = Math.sqrt(
-        Math.pow(event.clientX - (positionX * window.innerWidth / 100), 2) + 
-        Math.pow(event.clientY - (positionY * window.innerHeight / 100), 2)
+        Math.pow(event.pageX - (positionX * window.innerWidth / 100), 2) + 
+        Math.pow(event.pageY - (positionY * window.innerHeight / 100), 2)
       );
       
       // Calculate opacity based on distance

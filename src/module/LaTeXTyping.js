@@ -15,7 +15,7 @@ const LaTeXTyping = ({
     pauseDuration = 2000,
     fontSize = 1.5 // New prop for font size scaling
 }) => {
-    const typedText = useTypingEffect(equations, typingSpeed, deletingSpeed, pauseDuration);
+    const typedText = equations[0];// useTypingEffect(equations, typingSpeed, deletingSpeed, pauseDuration);
 
     // Render LaTeX safely
     const renderLatex = (tex) => {

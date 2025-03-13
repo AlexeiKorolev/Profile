@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../style/Projects.css';
+import princetonLogo from '../assets/logos/princeton-logo.svg';
 
 const ProjectCard = ({ title, description, image, video, skills, links }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -70,43 +71,24 @@ const ProjectCard = ({ title, description, image, video, skills, links }) => {
 const Projects = () => {
     const projects = [
         {
-            title: "AI Analytics Platform",
-            description: "A full-stack application providing real-time analytics and predictive insights using machine learning algorithms.",
-            image: "/path/to/project1-image.jpg",
-            skills: ["React", "Python", "TensorFlow", "AWS", "Node.js"],
+            title: "IEEE AI Research Paper",
+            description: "Coauthored a research paper on AI and a novel method for biometric identification. Presented at the MIT Undergraduate Research Technology Conference.",
+            skills: ["MATLAB", "Python", "Machine Learning", "Signal Processing", "Research"],
+            video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            links: {
+                website: "https://ieeexplore.ieee.org/document/10002184",
+            }
+        },
+        {
+            title: "Phonetic Sentiment Model",
+            description: "Demonstrated that English encodes sentiment within the phonetic pronunciation of words, a proof of concept for a lightweight NLP smart-sentiment model.",
+            skills: ["Python", "NLP", "Machine Learning", "Research", "Data Analysis"],
             video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
             links: {
                 github: "https://github.com/username/project1",
-                website: "https://project1.com",
-                video: "https://youtube.com/demo1",
-                details: "/projects/ai-analytics"
             }
-
-        },
-        {
-            title: "AI Analytics Platform",
-            description: "A full-stack application providing real-time analytics and predictive insights using machine learning algorithms.",
-            image: "/path/to/project1-image.jpg",
-            skills: ["React", "Python", "TensorFlow", "AWS", "Node.js"],
-            links: {
-                github: "https://github.com/username/project1",
-                website: "https://project1.com",
-                video: "https://youtube.com/demo1",
-                details: "/projects/ai-analytics"
-            }
-        },
-        {
-            title: "AI Analytics Platform",
-            description: "A full-stack application providing real-time analytics and predictive insights using machine learning algorithms.",
-            image: "/path/to/project1-image.jpg",
-            skills: ["React", "Python", "TensorFlow", "AWS", "Node.js"],
-            links: {
-                github: "https://github.com/username/project1",
-                website: "https://project1.com",
-                video: "https://youtube.com/demo1",
-                details: "/projects/ai-analytics"
-            }
-        },
+            
+        }
         // Add more projects...
     ];
     return (
