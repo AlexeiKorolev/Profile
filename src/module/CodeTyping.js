@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import useTypingEffect from '../hooks/Effects';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/components/prism-python';
 
 const CodeTyping = () => {
+    const codeRef = useRef(null);
+
+
     const pythonCode = `def fibonacci(n):
     if n <= 1:
         return n
@@ -21,6 +27,12 @@ print(result)`;
     
     const typedText = useTypingEffect(phrases, 100, 50, 2000);
 
+    useEffect(() => {
+      if (codeRef.current) {
+          Prism.highlightElement(codeRef.current);
+      }
+  }, [typedText]);
+
   return (
     <pre style={{
       padding: '15px',
@@ -32,7 +44,12 @@ print(result)`;
       textAlign: 'left',
       boxShadow: '0 3px 10px rgba(0,0,0,0.2)'
     }}>
-      <code>{typedText}</code>
+      <code
+                ref={codeRef}
+                className="language-python"
+                style={{"background-color": "rgba(0,0,0,0) !important;"}}>
+                {typedText}
+            </code>
     </pre>
   );
 };
