@@ -5,6 +5,10 @@ import princetonLogo from '../assets/logos/princeton-logo.svg';
 import smlLogo from '../assets/logos/SML-logo2.svg';
 import cosLogo from '../assets/logos/cos.png';
 import { useInView } from 'react-intersection-observer';
+import HiddenDiv from './HiddenDiv';
+import CodeTyping from './CodeTyping';
+import LaTeXTyping from './LaTeXTyping';
+import { THREASH, phrases, customPhrases, customEquations } from './Constants';
 
 
 const About = () => {
@@ -20,6 +24,23 @@ const About = () => {
 
     return (
         <section className="about-section">
+            <HiddenDiv positionX={30} positionY={300} threshold={THREASH}>
+            <LaTeXTyping 
+                equation={customEquations[0]}
+                typingSpeed={5}
+                deletingSpeed={5}
+                pauseDuration={2000}
+            />
+            </HiddenDiv>
+
+            <HiddenDiv positionX={50} positionY={25} threshold={THREASH}>
+            <LaTeXTyping 
+                equation={customEquations[1]}
+                typingSpeed={5}
+                deletingSpeed={5}
+                pauseDuration={2000}
+            />
+            </HiddenDiv>
             <div className="about-container">
                 <div 
                     ref={profileRef}

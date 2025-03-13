@@ -4,65 +4,10 @@ import useTypingEffect from '../hooks/Effects';
 import HiddenDiv from './HiddenDiv';
 import CodeTyping from './CodeTyping';
 import LaTeXTyping from './LaTeXTyping';
-
+import { THREASH, phrases, customPhrases, customEquations } from './Constants';
 
 const Landing = () => {
-    const THREASH = 200;
     const titleRef = useRef(null);
-    const phrases = [
-        "Data Scientist",
-        "Software Engineer",
-        "AI Researcher",
-        "Technology Enthusiast"
-    ];
-
-    const customPhrases = [
-        `// Simple quicksort implementation
-    function quickSort(arr) {
-        if (arr.length <= 1) return arr;
-        
-        const pivot = arr[0];
-        const left = arr.filter((x, i) => i > 0 && x < pivot);
-        const right = arr.filter(x => x >= pivot);
-        
-        return [...quickSort(left), pivot, ...quickSort(right)];
-    }`,
-        `// Binary search implementation
-    function binarySearch(arr, target) {
-        let left = 0;
-        let right = arr.length - 1;
-        
-        while (left <= right) {
-            const mid = Math.floor((left + right) / 2);
-            if (arr[mid] === target) return mid;
-            if (arr[mid] < target) left = mid + 1;
-            else right = mid - 1;
-        }
-        return -1;
-    }`
-    ];
-
-    const customEquations1 = [
-        `\\hat{f}(\\xi) = \\int_{-\\infty}^{\\infty} f(x) e^{-2\\pi i x \\xi} \\, dx`,
-        `\\int_0^\\infty e^{-x^2} dx = \\frac{\\sqrt{\\pi}}{2}`
-    ];
-    
-    const customEquations2 = [
-        `f(x) = \\frac{1}{\\sigma \\sqrt{2\\pi}} e^{-\\frac{(x - \\mu)^2}{2\\sigma^2}}`,
-        `\\int_0^\\infty e^{-x^2} dx = \\frac{\\sqrt{\\pi}}{2}`
-    ];
-    
-    const customEquations3 = [
-        `E[X] = \\int_{-\\infty}^{\\infty} x f(x) dx`,
-        `E[X] = \\sum_{i} x_i P(x_i)`,
-        `\\lim_{n \\to \\infty} \\frac{1}{n} \\sum_{i=1}^{n} X_i = E[X]`
-    ];
-    
-    const customEquations4 = [
-        `P(G, \\lambda) = \\sum_{i=1}^{n} (-1)^i c_i \\lambda^{n-i}`,
-        `PR(v) = \\frac{1 - d}{N} + d \\sum_{u \\in \\text{in}(v)} \\frac{PR(u)}{\\deg^+(u)}`
-    ];
-
     const typedText = useTypingEffect(phrases, 100, 50, 2000);
 
     return (
@@ -71,7 +16,7 @@ const Landing = () => {
             <div className="subtitle">{typedText}<span className="cursor">|</span></div>
             <HiddenDiv positionX={30} positionY={30} threshold={THREASH}>
             <LaTeXTyping 
-                equations={customEquations1}
+                equation={customEquations[0]}
                 typingSpeed={5}
                 deletingSpeed={5}
                 pauseDuration={2000}
@@ -80,16 +25,16 @@ const Landing = () => {
 
             <HiddenDiv positionX={50} positionY={25} threshold={THREASH}>
             <LaTeXTyping 
-                equations={customEquations2}
+                equation={customEquations[1]}
                 typingSpeed={5}
                 deletingSpeed={5}
                 pauseDuration={2000}
             />
-            </HiddenDiv>
+            </HiddenDiv>  
 
             <HiddenDiv positionX={50} positionY={70} threshold={THREASH}>
             <LaTeXTyping 
-                equations={customEquations3}
+                equation={customEquations[2]}
                 typingSpeed={5}
                 deletingSpeed={5}
                 pauseDuration={2000}
@@ -98,7 +43,7 @@ const Landing = () => {
 
             <HiddenDiv positionX={30} positionY={70} threshold={THREASH}>
             <CodeTyping 
-                    phrases={customPhrases}
+                    phrase={customPhrases[0]}
                     language="javascript"
                     typingSpeed={50}
                     deletingSpeed={5}
@@ -108,7 +53,42 @@ const Landing = () => {
 
             <HiddenDiv positionX={80} positionY={40} threshold={THREASH}>
             <CodeTyping 
-                    phrases={customPhrases}
+                    phrase={customPhrases[1]}
+                    language="javascript"
+                    typingSpeed={50}
+                    deletingSpeed={5}
+                    pauseDuration={2000}
+                />
+            </HiddenDiv>
+            <HiddenDiv positionX={30} positionY={100} threshold={THREASH}>
+            <LaTeXTyping 
+                equation={customEquations[3]}
+                typingSpeed={5}
+                deletingSpeed={5}
+                pauseDuration={2000}
+            />
+            </HiddenDiv>
+
+            <HiddenDiv positionX={90} positionY={125} threshold={THREASH}>
+            <LaTeXTyping 
+                equation={customEquations[4]}
+                typingSpeed={5}
+                deletingSpeed={5}
+                pauseDuration={2000}
+            />
+            </HiddenDiv>
+            <HiddenDiv positionX={20} positionY={180} threshold={THREASH}>
+            <CodeTyping 
+                    phrase={customPhrases[1]}
+                    language="javascript"
+                    typingSpeed={50}
+                    deletingSpeed={5}
+                    pauseDuration={2000}
+                />
+            </HiddenDiv>
+            <HiddenDiv positionX={80} positionY={280} threshold={THREASH}>
+            <CodeTyping 
+                    phrase={customPhrases[1]}
                     language="javascript"
                     typingSpeed={50}
                     deletingSpeed={5}

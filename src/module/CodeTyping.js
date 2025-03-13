@@ -5,7 +5,7 @@ import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/components/prism-python';
 
 const CodeTyping = ({ 
-  phrases = [
+  phrase = 
       `def fibonacci(n):
   if n <= 1:
       return n
@@ -17,8 +17,7 @@ const CodeTyping = ({
 
 # Calculate first 10 Fibonacci numbers
 result = [fibonacci(i) for i in range(10)]
-print(result)`
-  ],
+print(result)`,
   language = 'python',
   typingSpeed = 100,
   deletingSpeed = 50,
@@ -26,7 +25,7 @@ print(result)`
 }) => {
     const codeRef = useRef(null);
     
-    const typedText = phrases[0]//useTypingEffect(phrases, typingSpeed, deletingSpeed, pauseDuration);
+    const typedText = phrase
 
     useEffect(() => {
       if (codeRef.current) {
