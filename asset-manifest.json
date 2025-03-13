@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Profile/static/css/main.826691f4.css",
-    "main.js": "/Profile/static/js/main.6a1981e2.js",
+    "main.css": "/Profile/static/css/main.87e8abb6.css",
+    "main.js": "/Profile/static/js/main.6998a401.js",
     "static/media/KaTeX_AMS-Regular.ttf": "/Profile/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/cos.png": "/Profile/static/media/cos.379464e45ef11de5bf93.png",
     "static/media/KaTeX_Main-Regular.ttf": "/Profile/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
@@ -66,11 +66,11 @@
     "static/media/KaTeX_Size3-Regular.woff2": "/Profile/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "static/media/SML-logo2.svg": "/Profile/static/media/SML-logo2.4738ab7607b32e89e9dcc1ae4470965b.svg",
     "index.html": "/Profile/index.html",
-    "main.826691f4.css.map": "/Profile/static/css/main.826691f4.css.map",
-    "main.6a1981e2.js.map": "/Profile/static/js/main.6a1981e2.js.map"
+    "main.87e8abb6.css.map": "/Profile/static/css/main.87e8abb6.css.map",
+    "main.6998a401.js.map": "/Profile/static/js/main.6998a401.js.map"
   },
   "entrypoints": [
-    "static/css/main.826691f4.css",
-    "static/js/main.6a1981e2.js"
+    "static/css/main.87e8abb6.css",
+    "static/js/main.6998a401.js"
   ]
 }
