@@ -12,7 +12,7 @@ const ExperienceCard = ({ role, company, period, description, skills, logo }) =>
 
 
     return (
-        <div className="experience-card-wrapper">
+        <div ref={ref} className={`experience-card-wrapper ${inView ? 'visible' : ''}`}>
             <div 
                 className="experience-card"
                 onMouseEnter={() => setIsHovered(true)}

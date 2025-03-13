@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import '../style/Landing.css';
 import useTypingEffect from '../hooks/Effects';
+import HiddenDiv from './HiddenDiv';
+import CodeTyping from './CodeTyping';
 
 
 const Landing = () => {
@@ -18,6 +20,9 @@ const Landing = () => {
         <div className="landing-container">
             <div ref={titleRef} className="title">Alexei Korolev</div>
             <div className="subtitle">{typedText}<span className="cursor">|</span></div>
+            <HiddenDiv positionX={400} positionY={400} threshold={150}>
+                <CodeTyping/>
+            </HiddenDiv>
             <div className="shape shape1"></div>
             <div className="shape shape2"></div>
             <div className="shape shape3"></div>
