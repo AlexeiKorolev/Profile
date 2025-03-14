@@ -16,7 +16,7 @@ import { HashRouter as Router } from 'react-router-dom';  // Changed import
 
 function App() {
   return (
-    <Router basename="/Profile">
+    <Router basename="/">
     <div>
       <Navbar />
       <header>
