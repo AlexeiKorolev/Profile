@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../style/Projects.css';
-import princetonLogo from '../assets/logos/princeton-logo.svg';
+import gsetVideo from '../assets/videos/gset.mp4';
 
 const ProjectCard = ({ title, description, image, video, skills, links }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -74,7 +74,7 @@ const Projects = () => {
             title: "IEEE AI Research Paper",
             description: "Coauthored a research paper on AI and a novel method for biometric identification. Presented at the MIT Undergraduate Research Technology Conference.",
             skills: ["MATLAB", "Python", "Machine Learning", "Signal Processing", "Research"],
-            video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            video: gsetVideo,
             links: {
                 website: "https://ieeexplore.ieee.org/document/10002184",
             }
