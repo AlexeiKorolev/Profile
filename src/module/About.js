@@ -5,10 +5,7 @@ import princetonLogo from '../assets/logos/princeton-logo.svg';
 import smlLogo from '../assets/logos/SML-logo2.svg';
 import cosLogo from '../assets/logos/cos.png';
 import { useInView } from 'react-intersection-observer';
-import HiddenDiv from './HiddenDiv';
-import CodeTyping from './CodeTyping';
-import LaTeXTyping from './LaTeXTyping';
-import { THREASH, phrases, customPhrases, customEquations } from './Constants';
+import profile from '../assets/ProfileCropped2.png';
 
 
 const About = () => {
@@ -31,7 +28,7 @@ const About = () => {
                     className={`profile-image-container fade-in-section ${profileInView ? 'is-visible' : ''}`}
                 >
                     <img 
-                        src="https://avatars.githubusercontent.com/u/10978757?v=3" 
+                        src={profile} 
                         alt="Profile" 
                         className="profile-image"
                     />
