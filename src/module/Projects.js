@@ -4,6 +4,7 @@ import gsetVideo from '../assets/videos/gset.mp4';
 import nlpVideo from '../assets/videos/nlp.mp4';
 import smlVideo from '../assets/videos/SML 310.mp4';
 import particleVideo from '../assets/videos/Particle Sim.mp4';
+import profileVideo from '../assets/videos/Profile.mp4';
 
 
 const ProjectCard = ({ title, description, image, video, skills, links }) => {
@@ -108,6 +109,15 @@ const Projects = () => {
             video: particleVideo,
             links: {
                 github: "https://github.com/AlexeiKorolev/Gas-Simulation",
+            }
+        },
+        {
+            title: "This Profile",
+            description: "Designed an animated react profile without templates. Let my love for coffee and clean design shine through.",
+            skills: ["React", "JavaScript", "CSS", "Design"],
+            video: profileVideo,
+            links: {
+                website: "/",
             }
         }
 
