@@ -2,7 +2,7 @@
 export const THREASH = 300;
 export const phrases = [
     "Data Scientist",
-    "Software Engineer",
+    "Developer",
     "AI Researcher",
     "Technology Enthusiast"
 ];
