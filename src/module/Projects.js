@@ -121,6 +121,17 @@ const Projects = () => {
                     <ProjectCard key={index} {...project} />
                 ))}
             </div>
+            <div className="more-projects">
+                <a 
+                    href="https://github.com/AlexeiKorolev" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="github-link"
+                >
+                    <i className="fab fa-github"></i>
+                    For more projects, visit my GitHub
+                </a>
+            </div>
         </section>
     );
 };
