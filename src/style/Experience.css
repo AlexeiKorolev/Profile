@@ -176,6 +176,7 @@
 .experience-container .experience-card-wrapper:nth-child(5) { transition-delay: 0.5s; }
 .experience-container .experience-card-wrapper:nth-child(6) { transition-delay: 0.6s; }
 .experience-container .experience-card-wrapper:nth-child(7) { transition-delay: 0.7s; }
+.experience-container .experience-card-wrapper:nth-child(8) { transition-delay: 0.8s; }
 
 .experience-card-wrapper:has(.detailed-card.active) {
     z-index: 10;

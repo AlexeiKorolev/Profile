@@ -1,5 +1,5 @@
 
-export const THREASH = 200;
+export const THREASH = 300;
 export const phrases = [
     "Data Scientist",
     "Software Engineer",
