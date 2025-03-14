@@ -69,7 +69,7 @@ const Landing = () => {
             />
             </HiddenDiv>
 
-            <HiddenDiv positionX={90} positionY={125} threshold={THREASH}>
+            <HiddenDiv positionX={70} positionY={100} threshold={THREASH}>
             <LaTeXTyping 
                 equation={customEquations[4]}
                 typingSpeed={5}

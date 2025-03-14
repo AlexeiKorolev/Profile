@@ -1,0 +1,183 @@
+.leadership-section {
+    padding: 4rem 2rem;
+    background-color: var(--background-color);
+}
+
+.leadership-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 2rem;
+}
+
+.leadership-left {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.leadership-left h3 {
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 1.5rem;
+    background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.leadership-intro {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.leadership-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.leadership-card {
+    background: var(--card-background);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.leadership-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.leadership-card-link:hover {
+    transform: translateY(-5px);
+}
+
+
+.leadership-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.leadership-card:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Add a subtle indicator that the card is clickable */
+.leadership-card::after {
+    content: '↗';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.leadership-card:hover::after {
+    opacity: 1;
+}
+
+.leadership-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.organization-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.header-text {
+    flex: 1;
+}
+
+.header-text h4 {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .organization-logo {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.leadership-header h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.organization {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.period {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.description {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.impact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.impact-list li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    color: var(--text-secondary);
+}
+
+.impact-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+@media (max-width: 968px) {
+    .leadership-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .leadership-left {
+        position: static;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .leadership-section {
+        padding: 3rem 1rem;
+    }
+
+    .leadership-card {
+        padding: 1.5rem;
+    }
+}

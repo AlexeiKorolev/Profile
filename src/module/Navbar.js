@@ -20,6 +20,7 @@ const Navbar = () => {
                 <a onClick={() => scrollToSection('about')} href="#about">About</a>
                 <a onClick={() => scrollToSection('experience')} href="#experience">Experience</a>
                 <a onClick={() => scrollToSection('projects')} href="#projects">Projects</a>
+                <a onClick={() => scrollToSection('leadership')} href="#leadership">Leadership</a>
                 <a onClick={() => scrollToSection('contact')} href="#contact">Contact</a>
             </div>
         </nav>

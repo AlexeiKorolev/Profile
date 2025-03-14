@@ -17,7 +17,6 @@ const ProjectCard = ({ title, description, image, video, skills, links }) => {
             style={backgroundStyle}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            id="projects"
         >
             {video && isHovered && (
                 <video
@@ -88,13 +87,12 @@ const Projects = () => {
             links: {
                 github: "https://github.com/AlexeiKorolev/NLP-Phonetic-Sentiment",
             }
-            
         }
         // Add more projects...
     ];
     return (
         <section className="projects-section">
-            <h2 className="section-title">Featured Projects</h2>
+            <h2 className="section-title" id="projects">Featured Projects</h2>
             <div className="projects-container">
                 {projects.map((project, index) => (
                     <ProjectCard key={index} {...project} />

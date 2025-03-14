@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import About from './About';
 import Experience from './Experience';
 import Projects from './Projects';
+import Leadership from './Leadership';
 import Footer from './Footer';
 
 import AnimatedCursor from "react-animated-cursor";
@@ -25,6 +26,7 @@ function App() {
           <About />
           <Experience />
           <Projects />
+          <Leadership />
           <Footer />
           <AnimatedCursor innerSize={8}
               outerSize={35}
