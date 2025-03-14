@@ -108,7 +108,7 @@ const Experience = () => {
             role: "Software Engineering Intern",
             company: "Orgo",
             period: "Summers 2023, 2024",
-            description: "Created a new customer invites system, boosting user acquisition by 25-50% using React and Firebase. Added the infrastructure necessary for an \"import from Google\" feature.",
+            description: "Created a new customer invites system, boosting user acquisition by up to 25-50% using React and Firebase. Added the infrastructure necessary for an \"import from Google\" feature.",
             skills: ["React", "Firebase", "Machine Learning"],
             detailedSkills: ["React-Native", "Firebase", "Machine Learning", "Data Pipelines", "Google Cloud Functions", "Google APIs"],
 
@@ -169,7 +169,7 @@ const Experience = () => {
     return (
         <section className="experience-section" id="experience">
         
-            <h2 className="section-title">Recent Work Experience</h2>
+            <h2 className="section-title">Recent Experiences</h2>
             <div className="experience-container">
                 {experiences.map((exp, index) => (
                     <ExperienceCard key={index} {...exp} />

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import '../style/Projects.css';
 import gsetVideo from '../assets/videos/gset.mp4';
+import nlpVideo from '../assets/videos/nlp.mp4';
+import smlVideo from '../assets/videos/SML 310.mp4';
+import particleVideo from '../assets/videos/Particle Sim.mp4';
+
 
 const ProjectCard = ({ title, description, image, video, skills, links }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -83,11 +87,30 @@ const Projects = () => {
             title: "Phonetic Sentiment Model",
             description: "Demonstrated that English encodes sentiment within the phonetic pronunciation of words, a proof of concept for a lightweight NLP smart-sentiment model.",
             skills: ["Python", "NLP", "Machine Learning", "Research", "Data Analysis"],
-            video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            video: nlpVideo,
             links: {
                 github: "https://github.com/AlexeiKorolev/NLP-Phonetic-Sentiment",
             }
+        },
+        {
+            title: "Forecasting Starcraft II Victories",
+            description: "Used LSTM neural networks to predict Starcraft II match outcomes with 92% accuracy, beating past research by almost 10%.",
+            skills: ["Python", "RNNs", "Machine Learning", "Data Wrangling"],
+            video: smlVideo,
+            links: {
+                github: "https://github.com/AlexeiKorolev/Starcraft-LSTM-Prediction",
+            }
+        },
+        {
+            title: "Homogenous Gas Simulation Engine",
+            description: "Designed an optimized C++ homogenous gas engine, beating a Python-based one by 1000% in speed. Modeled accurate particle collisions and derived the Boltzman Distribution via sim.",
+            skills: ["C++", "Python", "Simulation", "Optimization", "Physics"],
+            video: particleVideo,
+            links: {
+                github: "https://github.com/AlexeiKorolev/Gas-Simulation",
+            }
         }
+
         // Add more projects...
     ];
     return (

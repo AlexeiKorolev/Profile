@@ -50,6 +50,7 @@
         transparent,
         var(--transparent-background) 20%
     );
+    backdrop-filter: blur(2px);
     color: var(--text-color);
     transition: transform 0.3s ease;
     z-index: 1;
