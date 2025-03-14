@@ -19,7 +19,7 @@ const Leadership = () => {
             organization: "TigerLaunch",
             period: "2023 - Present",
             description: "Two-year partnerships officer @ TigerLaunch, the world’s largest student-run entrepreneurship competition.",
-            impact: ["Led a team of 6 and helped secure $130K in sponsorship funds for the 2024-2025 season.", "Built a robust desktop app that web-scrapes Princeton alumni contacts, increasing outreach output by 7x.", "Opened a new regional competition in Istanbul, Turkie, partnering with Turkie’s largest Venture Capital organization."],
+            impact: ["Led a team of 6 and helped secure >$90K in sponsorship funds for the 2024-2025 season.", "Built a robust desktop app that web-scrapes Princeton alumni contacts, increasing outreach output by at least 7x.", "Opened a new regional competition in Istanbul, Turkie, partnering with Turkie’s largest Venture Capital organization."],
             url: "https://tigerlaunch.com/home",
             logo: tigerlaunchLogo
         }
