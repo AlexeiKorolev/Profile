@@ -85,6 +85,15 @@ const Projects = () => {
             }
         },
         {
+            title: "TigerMarket",
+            description: "A AI-augmented marketplace app for Princeton students.",
+            skills: ["React", "Express", "NodeJS", "Full Stack Development", "AI Engineering"],
+            video: nlpVideo,
+            links: {
+                website: "https://tigermarket-f7555a069d76.herokuapp.com/",
+            }
+        },
+        {
             title: "Phonetic Sentiment Model",
             description: "Demonstrated that English encodes sentiment within the phonetic pronunciation of words, a proof of concept for a lightweight NLP smart-sentiment model.",
             skills: ["Python", "NLP", "Machine Learning", "Research", "Data Analysis"],
