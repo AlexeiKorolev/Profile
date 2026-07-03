@@ -7,21 +7,22 @@ import Papers from './Papers';
 import Leadership from './Leadership';
 
 const SECTIONS = {
-    up: { label: 'Experience' },
-    down: { label: 'Projects' },
+    up: { label: 'Leadership' },
+    down: { label: 'Experience' },
     left: { label: 'Papers' },
-    right: { label: 'Leadership' },
+    right: { label: 'Projects' },
 };
 
 const OPPOSITE = { up: 'down', down: 'up', left: 'right', right: 'left' };
-const VIEW_TO_HASH = { up: '#experience', down: '#projects', left: '#papers', right: '#leadership' };
+const VIEW_TO_HASH = { up: '#leadership', down: '#experience', left: '#papers', right: '#projects' };
 const HASH_TO_VIEW = Object.fromEntries(
     Object.entries(VIEW_TO_HASH).map(([view, hash]) => [hash, view])
 );
-const ARROW_ZONE = 150;   // px from edge where the arrow appears
-const TRIGGER_ZONE = 16;  // px from edge that triggers navigation
-const NAV_COOLDOWN = 900; // ms between navigations
-const SWIPE_MIN = 60;     // px minimum swipe distance
+const ARROW_ZONE = 150;      // px from edge where the arrow appears; clicks there navigate
+const NAV_COOLDOWN = 900;    // ms between navigations
+const SWIPE_MIN = 60;        // px minimum swipe distance
+const WHEEL_THRESHOLD = 140; // accumulated wheel delta that triggers navigation
+const WHEEL_COOLDOWN = 1500; // ms wheel is ignored after a navigation (absorbs inertia)
 
 const PlusNav = () => {
     const [view, setView] = useState(() => HASH_TO_VIEW[window.location.hash] || 'center');
@@ -29,6 +30,7 @@ const PlusNav = () => {
     const lastNav = useRef(0);
     const rafRef = useRef(null);
     const touchStart = useRef(null);
+    const wheelAccum = useRef({ dir: null, amount: 0, t: 0 });
     const panelRefs = useRef({});
 
     const navigate = useCallback((dir) => {
@@ -51,7 +53,7 @@ const PlusNav = () => {
         window.history.replaceState(null, '', VIEW_TO_HASH[view] || window.location.pathname + window.location.search);
     }, [view]);
 
-    // Desktop: edge-proximity arrows + trigger
+    // Desktop: edge-proximity arrows (navigation happens on click, not proximity)
     useEffect(() => {
         if (!window.matchMedia('(pointer: fine)').matches) return undefined;
         const onMove = (e) => {
@@ -73,8 +75,7 @@ const PlusNav = () => {
                         best = dir;
                     }
                 });
-                setArrow(best);
-                if (best && dist[best] < TRIGGER_ZONE) navigate(best);
+                setArrow((prev) => (prev === best ? prev : best));
             });
         };
         window.addEventListener('mousemove', onMove);
@@ -83,6 +84,47 @@ const PlusNav = () => {
             if (rafRef.current) cancelAnimationFrame(rafRef.current);
             rafRef.current = null;
         };
+    }, [view, navigate]);
+
+    // Scroll wheel / trackpad navigation.
+    // The Experience panel scrolls horizontally and Papers/Projects scroll
+    // vertically, so a panel's content axis never lines up with the wheel
+    // gesture that leaves it — no accidental page switches mid-scroll.
+    useEffect(() => {
+        const onWheel = (e) => {
+            const now = Date.now();
+            if (now - lastNav.current < WHEEL_COOLDOWN) {
+                wheelAccum.current.amount = 0;
+                return;
+            }
+            const absX = Math.abs(e.deltaX);
+            const absY = Math.abs(e.deltaY);
+            let dir = null;
+            if (absY > absX) dir = e.deltaY > 0 ? 'down' : 'up';
+            else if (absX > absY) dir = e.deltaX > 0 ? 'right' : 'left';
+            if (!dir) return;
+
+            if (view !== 'center') {
+                if (dir !== OPPOSITE[view]) return;
+                // Leadership scrolls vertically — only wheel home from its bottom edge.
+                const el = panelRefs.current[view];
+                if (view === 'up' && el && el.scrollTop + el.clientHeight < el.scrollHeight - 4) return;
+            }
+
+            const acc = wheelAccum.current;
+            if (acc.dir !== dir || now - acc.t > 400) {
+                acc.dir = dir;
+                acc.amount = 0;
+            }
+            acc.t = now;
+            acc.amount += Math.max(absX, absY);
+            if (acc.amount >= WHEEL_THRESHOLD) {
+                acc.amount = 0;
+                navigate(dir);
+            }
+        };
+        window.addEventListener('wheel', onWheel, { passive: true });
+        return () => window.removeEventListener('wheel', onWheel);
     }, [view, navigate]);
 
     // Keyboard navigation
@@ -131,30 +173,42 @@ const PlusNav = () => {
             return;
         }
         if (dir !== OPPOSITE[view]) return;
-        // Vertical sections scroll internally — only swipe home from the scroll boundary.
+        // Leadership scrolls vertically — only swipe home from its bottom edge.
+        // Experience scrolls horizontally and Papers/Projects vertically, so
+        // their back-swipe axis never fights the content scroll.
         const el = panelRefs.current[view];
         if (view === 'up' && el && el.scrollTop + el.clientHeight < el.scrollHeight - 4) return;
-        if (view === 'down' && el && el.scrollTop > 4) return;
         navigate(dir);
     };
 
     const setPanelRef = (key) => (el) => { panelRefs.current[key] = el; };
 
+    // A click anywhere in the edge zone (while its arrow is showing) navigates —
+    // no need to hit the arrow button itself. Real links/buttons keep priority.
+    const onViewportClick = (e) => {
+        if (!arrow) return;
+        if (e.target.closest('a, button')) return;
+        navigate(arrow);
+    };
+
     return (
-        <div className="plus-viewport" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+        <div
+            className={`plus-viewport ${arrow ? 'nav-ready' : ''}`}
+            onClick={onViewportClick}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+        >
             <div className={`plus-board view-${view}`}>
                 <section className="panel panel-center" aria-hidden={view !== 'center'}>
                     <Center />
                 </section>
                 <section className="panel panel-up" aria-hidden={view !== 'up'}>
                     <div className="panel-scroll" ref={setPanelRef('up')}>
-                        <Experience />
+                        <Leadership />
                     </div>
                 </section>
                 <section className="panel panel-down" aria-hidden={view !== 'down'}>
-                    <div className="panel-scroll" ref={setPanelRef('down')}>
-                        <Projects />
-                    </div>
+                    <Experience />
                 </section>
                 <section className="panel panel-left" aria-hidden={view !== 'left'}>
                     <div className="panel-scroll" ref={setPanelRef('left')}>
@@ -163,7 +217,7 @@ const PlusNav = () => {
                 </section>
                 <section className="panel panel-right" aria-hidden={view !== 'right'}>
                     <div className="panel-scroll" ref={setPanelRef('right')}>
-                        <Leadership />
+                        <Projects />
                     </div>
                 </section>
             </div>

@@ -24,8 +24,8 @@ const Center = () => {
                 <p className="center-bio">
                     I like hard problems. Currently researching machine learning for
                     space-telescope wavefront control with NASA Ames and spending the
-                    summer as a software engineering intern at Merck. Previously at
-                    Nuro, Lycoming Engines, and a few startups.
+                    summer as a data science intern at Meta. Previously at
+                    Nuro, Kenvue, Lycoming Engines, and a few startups.
                 </p>
                 <div className="center-links">
                     <a href="mailto:alexei.korolev@princeton.edu" aria-label="Email">

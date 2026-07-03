@@ -5,15 +5,15 @@ import tigerlaunchLogo from '../assets/logos/tigerlaunch-logo.png';
 
 const leadershipRoles = [
     {
-        title: 'Lead of Software & Computer Vision',
+        title: 'Co-President',
         organization: 'Princeton Autonomous Vehicle Engineering (PAVE)',
         period: '2023 – Present',
-        description: 'Leading the software and computer vision team building a low-cost autonomous vehicle platform.',
+        description: 'Co-president of Princeton\'s top undergraduate autonomous vehicle engineering club, after leading its software & computer vision team.',
         impact: [
-            'Manage a team of 15 students across perception, planning, and simulation',
-            'Designed and trained object detection and image segmentation models',
-            'Led the design of a steering solution algorithm from sensory data',
-            'Built a virtual pilot simulation and guided an ultrasonic point-cloud sensor subteam',
+            'Led 25 members across 4 subteams building an AI driver — depth sensing, object detection, custom image-embedding models, and microcontrollers',
+            'Hosted an autonomous vehicle demo day with Google DeepMind, Blue Origin, and Toyota — 100+ attendees',
+            'Integrated the team into Professor Felix Heide\'s lab: access to a road-legal car outfitted with high-end sensors',
+            'Brought in Waymo and Aurora Flight Sciences as speakers; helped secure $15K in project funding',
         ],
         url: 'https://blogs.princeton.edu/pave/about',
         logo: pavelogo,

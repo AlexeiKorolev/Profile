@@ -12,6 +12,9 @@ body {
     background-color: var(--background-color);
 }
 
+/* Cursor is inside an edge zone — a click here navigates */
+.plus-viewport.nav-ready { cursor: pointer; }
+
 .plus-board {
     position: absolute;
     top: 0;

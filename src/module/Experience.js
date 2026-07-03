@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import '../style/Sections.css';
 
 const Logo = ({ company, logo }) => {
@@ -25,11 +25,12 @@ const Logo = ({ company, logo }) => {
 
 const experiences = [
     {
-        role: 'Software Engineering Intern',
-        company: 'Merck',
+        role: 'Data Science Intern',
+        company: 'Meta',
         period: 'Summer 2026',
-        description: 'Software engineering with Merck\'s IT organization, building internal tooling at enterprise scale.',
-        skills: ['Software Engineering', 'Enterprise IT'],
+        description: 'Working on content farming metrics — measuring and modeling mass-produced content on the platform.',
+        skills: ['Python', 'SQL', 'Data Science'],
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg',
     },
     {
         role: 'Machine Learning Researcher',
@@ -42,9 +43,16 @@ const experiences = [
     {
         role: 'Software Engineering Intern',
         company: 'Nuro',
+        period: 'Winter 2026',
+        description: 'Developed a novel camera–LiDAR calibration method for autonomous vehicles, combining learned visual features with geometric optimization for accurate sensor alignment without structured calibration targets.',
+        skills: ['C++', 'Computer Vision', 'Sensor Calibration'],
+    },
+    {
+        role: 'AI Intern',
+        company: 'Kenvue',
         period: 'Summer 2025',
-        description: 'Software engineering at Nuro, an autonomous driving company, working on infrastructure for self-driving systems.',
-        skills: ['C++', 'Python', 'Autonomous Vehicles'],
+        description: 'Deployed an LLM agent that makes interfacing with networking tools easier.',
+        skills: ['LLMs', 'Python', 'Networking'],
     },
     {
         role: 'Data Science Intern',
@@ -62,34 +70,12 @@ const experiences = [
         skills: ['Python', 'SQL', 'Feature Engineering'],
     },
     {
-        role: 'Data Research Intern',
+        role: 'Computational Chemistry Research Intern',
         company: 'Princeton University',
         period: 'Summer 2024',
         description: 'Large-scale coarse-grained MD simulations of chromatin tension on the Princeton computing cluster (Jacobs Lab, Chemistry).',
         skills: ['C', 'Python', 'Simulation'],
         logo: 'https://www.princeton.edu/themes/custom/hobbes/logo.svg',
-    },
-    {
-        role: 'Software Engineering Intern',
-        company: 'Orgo',
-        period: 'Summers 2023 & 2024',
-        description: 'Built a customer-invite system boosting user acquisition by 25–50%, plus infrastructure for an "import from Google" feature.',
-        skills: ['React Native', 'Firebase', 'Google Cloud'],
-    },
-    {
-        role: 'App Developer Intern',
-        company: 'Huntington Breast Cancer Action Coalition',
-        period: 'Summer 2023',
-        description: 'Built a lifestyle-tracking Android app for cancer prevention with a Hive-backed storage system.',
-        skills: ['Android', 'Java', 'Hive'],
-    },
-    {
-        role: 'Game Developer Intern',
-        company: 'BTU Games',
-        period: '2022 – 2023',
-        description: 'C++ backend in Unreal Engine: OAuth 2.0 multi-platform login and a character movement framework for a soft-body physics engine.',
-        skills: ['C++', 'Unreal Engine', 'OAuth 2.0'],
-        logo: 'https://btugames.net/images/btu_logo.svg',
     },
     {
         role: 'AI Researcher',
@@ -100,30 +86,57 @@ const experiences = [
     },
 ];
 
-const Experience = () => (
-    <div className="section-inner">
-        <h2 className="section-heading">Experience</h2>
-        <div className="row-grid">
-            {experiences.map((exp, i) => (
-                <article className="info-row" key={i}>
-                    <Logo company={exp.company} logo={exp.logo} />
-                    <div className="row-body">
-                        <div className="row-top">
-                            <h3 className="row-title">{exp.role}</h3>
-                            <span className="row-period">{exp.period}</span>
-                        </div>
-                        <span className="row-subtitle">{exp.company}</span>
-                        <p className="row-text">{exp.description}</p>
-                        <div className="pill-row">
-                            {exp.skills.map((s, j) => (
-                                <span className="pill" key={j}>{s}</span>
-                            ))}
-                        </div>
-                    </div>
-                </article>
-            ))}
+// Scrolls horizontally so its axis never lines up with the vertical
+// wheel/swipe gesture that navigates back to the hub.
+const Experience = () => {
+    const scrollRef = useRef(null);
+    const drag = useRef(null);
+
+    const onMouseDown = (e) => {
+        e.preventDefault();
+        drag.current = { startX: e.clientX, startLeft: scrollRef.current.scrollLeft };
+    };
+    const onMouseMove = (e) => {
+        if (!drag.current) return;
+        scrollRef.current.scrollLeft = drag.current.startLeft - (e.clientX - drag.current.startX);
+    };
+    const endDrag = () => { drag.current = null; };
+
+    return (
+        <div className="xsection">
+            <h2 className="section-heading">Experience</h2>
+            <div
+                className="h-scroll"
+                ref={scrollRef}
+                onMouseDown={onMouseDown}
+                onMouseMove={onMouseMove}
+                onMouseUp={endDrag}
+                onMouseLeave={endDrag}
+            >
+                <div className="h-grid">
+                    {experiences.map((exp, i) => (
+                        <article className="info-row" key={i}>
+                            <Logo company={exp.company} logo={exp.logo} />
+                            <div className="row-body">
+                                <div className="row-top">
+                                    <h3 className="row-title">{exp.role}</h3>
+                                    <span className="row-period">{exp.period}</span>
+                                </div>
+                                <span className="row-subtitle">{exp.company}</span>
+                                <p className="row-text">{exp.description}</p>
+                                <div className="pill-row">
+                                    {exp.skills.map((s, j) => (
+                                        <span className="pill" key={j}>{s}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+            <p className="x-hint">drag or scroll sideways</p>
         </div>
-    </div>
-);
+    );
+};
 
 export default Experience;
