@@ -1,78 +1,73 @@
 import React from 'react';
-import '../style/Leadership.css';
-import pavelogo from '../assets/logos/pave-logo.png';  // Add your actual logo files
+import '../style/Sections.css';
+import pavelogo from '../assets/logos/pave-logo.png';
 import tigerlaunchLogo from '../assets/logos/tigerlaunch-logo.png';
 
-const Leadership = () => {
-    const leadershipRoles = [
-        {
-            title: "Head of Software and Computer Vision",
-            organization: "Princeton Autonomous Vehicle Engineering (PAVE)",
-            period: "2023 - Present",
-            description: "Promoted to Head of Software / Computer Vision, and currently designing a low-cost autonomous vehicle platform.",
-            impact: ["Managed a team of 15 motivated students", "Designed and trained object detection and image segmentation models", "Led the design of a steering solution algorithm from sensory data", "Led the design of a virtual pilot simulation", "Planned and guided a subteam to create an ultrasonic dot cloud sensor", "Provided mentorship, guidance, and planning"],
-            url: "https://blogs.princeton.edu/pave/about",
-            logo: pavelogo
-        },
-        {
-            title: "Head of Partnerships",
-            organization: "TigerLaunch",
-            period: "2023 - Present",
-            description: "Two-year partnerships officer @ TigerLaunch, the world’s largest student-run entrepreneurship competition.",
-            impact: ["Led a team of 6 and helped secure >$90K in sponsorship funds for the 2024-2025 season.", "Built a robust desktop app that web-scrapes Princeton alumni contacts, increasing outreach output by at least 7x.", "Opened a new regional competition in Istanbul, Turkie, partnering with Turkie’s largest Venture Capital organization."],
-            url: "https://tigerlaunch.com/home",
-            logo: tigerlaunchLogo
-        }
-    ];
+const leadershipRoles = [
+    {
+        title: 'Lead of Software & Computer Vision',
+        organization: 'Princeton Autonomous Vehicle Engineering (PAVE)',
+        period: '2023 – Present',
+        description: 'Leading the software and computer vision team building a low-cost autonomous vehicle platform.',
+        impact: [
+            'Manage a team of 15 students across perception, planning, and simulation',
+            'Designed and trained object detection and image segmentation models',
+            'Led the design of a steering solution algorithm from sensory data',
+            'Built a virtual pilot simulation and guided an ultrasonic point-cloud sensor subteam',
+        ],
+        url: 'https://blogs.princeton.edu/pave/about',
+        logo: pavelogo,
+    },
+    {
+        title: 'Head of Partnerships',
+        organization: 'TigerLaunch',
+        period: '2023 – Present',
+        description: 'Partnerships lead at the world\'s largest student-run entrepreneurship competition.',
+        impact: [
+            'Led a team of 6 and secured >$90K in sponsorships for the 2024–25 season',
+            'Built a desktop app that scrapes Princeton alumni contacts, a 7× boost to outreach',
+            'Opened a new regional competition in Istanbul with Türkiye\'s largest VC organization',
+        ],
+        url: 'https://tigerlaunch.com/home',
+        logo: tigerlaunchLogo,
+    },
+];
 
-    const handleCardClick = (url) => {
-        window.open(url, '_blank', 'noopener noreferrer');
-    };
-
-    return (
-        <section className="leadership-section">
-            <h2 className="section-title" id="leadership">Leadership</h2>
-            <div className="leadership-container">
-                <div className="leadership-left">
-                    <h3>Making an Impact</h3>
-                    <p className="leadership-intro">
-                        Beyond my technical work, I am active on campus in various leadership roles. Here is some of the work I've been doing.
-                    </p>
-                </div>
-                <div className="leadership-right">
-                    {leadershipRoles.map((role, index) => (
-                        <div 
-                            key={index} 
-                            className="leadership-card" 
-                            onClick={() => handleCardClick(role.url)}
-                            role="link"
-                            tabIndex={0}
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                    handleCardClick(role.url);
-                                }
-                            }}
-                        >
-                            <div className="leadership-header">
-                                <img src={role.logo} alt={`${role.organization} logo`} className="organization-logo" />
-                                <div className="header-text">
-                                    <h4>{role.title}</h4>
-                                    <span className="organization">{role.organization}</span>
-                                    <span className="period">{role.period}</span>
-                                </div>
+const Leadership = () => (
+    <div className="section-inner">
+        <h2 className="section-heading">Leadership</h2>
+        <p className="section-lede">
+            Beyond technical work, I'm active on campus in leadership roles.
+        </p>
+        <div className="leader-list">
+            {leadershipRoles.map((role, i) => (
+                <a
+                    className="leader-card"
+                    key={i}
+                    href={role.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <div className="leader-header">
+                        <img src={role.logo} alt={`${role.organization} logo`} className="row-logo" loading="lazy" />
+                        <div className="row-body">
+                            <div className="row-top">
+                                <h3 className="row-title">{role.title}</h3>
+                                <span className="row-period">{role.period}</span>
                             </div>
-                            <p className="description">{role.description}</p>
-                            <ul className="impact-list">
-                                {role.impact.map((item, i) => (
-                                    <li key={i}>{item}</li>
-                                ))}
-                            </ul>
+                            <span className="row-subtitle">{role.organization}</span>
                         </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
+                    </div>
+                    <p className="row-text">{role.description}</p>
+                    <ul className="impact-list">
+                        {role.impact.map((item, j) => (
+                            <li key={j}>{item}</li>
+                        ))}
+                    </ul>
+                </a>
+            ))}
+        </div>
+    </div>
+);
 
 export default Leadership;

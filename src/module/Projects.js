@@ -1,158 +1,122 @@
 import React, { useState } from 'react';
-import '../style/Projects.css';
-import gsetVideo from '../assets/videos/gset.mp4';
+import '../style/Sections.css';
 import nlpVideo from '../assets/videos/nlp.mp4';
 import smlVideo from '../assets/videos/SML 310.mp4';
 import particleVideo from '../assets/videos/Particle Sim.mp4';
 import profileVideo from '../assets/videos/Profile.mp4';
 
+const projects = [
+    {
+        title: 'RL Wavefront Control for Space Telescopes',
+        description: 'Reinforcement learning models for driving deformable mirrors in coronagraphs, built with the NASA Ames Coronagraph Experiment team.',
+        skills: ['Python', 'Reinforcement Learning', 'Optics'],
+        links: { github: 'https://github.com/AlexeiKorolev/NASA-RL-Wavefront-Control' },
+    },
+    {
+        title: 'DeepSeek Tokenizer Attack',
+        description: 'Inferred the training-data composition of DeepSeek models from their BPE tokenizer merge rules, and designed a K-Random BPE defense.',
+        skills: ['Python', 'LLMs', 'Security'],
+        links: { github: 'https://github.com/AlexeiKorolev/DeepSeek-Tokenizer-Attack' },
+    },
+    {
+        title: 'Molecular Gas Simulation Engine',
+        description: 'Optimized 3D molecular dynamics simulator in C++ (Lennard-Jones forces, periodic boundaries) — 10× faster than the Python baseline; derived the Boltzmann distribution from the sim.',
+        skills: ['C++', 'Simulation', 'Optimization'],
+        video: particleVideo,
+        links: { github: 'https://github.com/AlexeiKorolev/Gas-Simulation' },
+    },
+    {
+        title: 'Forecasting StarCraft II Victories',
+        description: 'LSTM networks predicting StarCraft II match outcomes with 92% accuracy — nearly 10% over prior research.',
+        skills: ['Python', 'RNNs', 'Machine Learning'],
+        video: smlVideo,
+        links: { github: 'https://github.com/AlexeiKorolev/Starcraft-LSTM-Prediction' },
+    },
+    {
+        title: 'TigerLaunch Alumni Scraper',
+        description: 'Desktop app that web-scrapes Princeton alumni contacts with a controlled browser, UI, and data exports — 7× outreach output for TigerLaunch.',
+        skills: ['Python', 'Automation', 'UI'],
+        links: { github: 'https://github.com/AlexeiKorolev/TigerLaunch-Scraper' },
+    },
+    {
+        title: 'TigerMarket',
+        description: 'AI-augmented marketplace web app for Princeton students.',
+        skills: ['React', 'Node.js', 'Full Stack'],
+        video: nlpVideo,
+        links: { website: 'https://tigermarket-f7555a069d76.herokuapp.com/' },
+    },
+    {
+        title: 'Phonetic Sentiment Model',
+        description: 'Showed that English encodes sentiment in the phonetic pronunciation of words — a proof of concept for lightweight NLP sentiment models.',
+        skills: ['Python', 'NLP', 'Research'],
+        video: nlpVideo,
+        links: { github: 'https://github.com/AlexeiKorolev/NLP-Phonetic-Sentiment' },
+    },
+    {
+        title: 'This Website',
+        description: 'A hand-built React portfolio with plus-shaped spatial navigation. No templates.',
+        skills: ['React', 'CSS', 'Design'],
+        video: profileVideo,
+        links: { github: 'https://github.com/AlexeiKorolev/Profile' },
+    },
+];
 
-const ProjectCard = ({ title, description, image, video, skills, links }) => {
+const ProjectCard = ({ title, description, video, skills, links }) => {
     const [isHovered, setIsHovered] = useState(false);
 
-    const backgroundStyle = {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, ${isHovered ? '1' : '0.2'}), 
-                         rgba(0, 0, 0, ${isHovered ? '1' : '0.3'})), 
-                         url(${image})`
-    };
-
     return (
-        <div 
-            className="project-card" 
-            style={backgroundStyle}
+        <article
+            className="project-tile"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
             {video && isHovered && (
-                <video
-                    className="project-video"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                >
+                <video className="tile-video" autoPlay muted loop playsInline>
                     <source src={video} type="video/mp4" />
                 </video>
             )}
-            <div className="project-content">
-                <h3 className="project-title">{title}</h3>
-                <p className="project-description">{description}</p>
-                <div className="project-skills">
-                    {skills.map((skill, index) => (
-                        <span key={index} className="skill-bubble">{skill}</span>
+            <div className="tile-content">
+                <h3 className="row-title">{title}</h3>
+                <p className="row-text">{description}</p>
+                <div className="pill-row">
+                    {skills.map((s, i) => (
+                        <span className="pill" key={i}>{s}</span>
                     ))}
                 </div>
-                <div className="project-links">
+                <div className="link-row">
                     {links.github && (
-                        <a href={links.github} className="project-link github" target="_blank" rel="noopener noreferrer">
-                            <i className="fab fa-github"></i>
-                            GitHub
+                        <a href={links.github} target="_blank" rel="noopener noreferrer">
+                            <i className="fab fa-github"></i> GitHub
                         </a>
                     )}
                     {links.website && (
-                        <a href={links.website} className="project-link website" target="_blank" rel="noopener noreferrer">
-                            <i className="fas fa-globe"></i>
-                            Website
-                        </a>
-                    )}
-                    {links.video && (
-                        <a href={links.video} className="project-link video" target="_blank" rel="noopener noreferrer">
-                            <i className="fas fa-play-circle"></i>
-                            Demo
-                        </a>
-                    )}
-                    {links.details && (
-                        <a href={links.details} className="project-link details" target="_blank" rel="noopener noreferrer">
-                            <i className="fas fa-info-circle"></i>
-                            Details
+                        <a href={links.website} target="_blank" rel="noopener noreferrer">
+                            <i className="fas fa-globe"></i> Website
                         </a>
                     )}
                 </div>
             </div>
+        </article>
+    );
+};
+
+const Projects = () => (
+    <div className="section-inner">
+        <h2 className="section-heading">Projects</h2>
+        <div className="tile-grid">
+            {projects.map((project, i) => (
+                <ProjectCard key={i} {...project} />
+            ))}
         </div>
-    );
-};
-
-const Projects = () => {
-    const projects = [
-        {
-            title: "IEEE AI Research Paper",
-            description: "Coauthored a research paper on AI and a novel method for biometric identification. Presented at the MIT Undergraduate Research Technology Conference.",
-            skills: ["MATLAB", "Python", "Machine Learning", "Signal Processing", "Research"],
-            video: gsetVideo,
-            links: {
-                website: "https://ieeexplore.ieee.org/document/10002184",
-            }
-        },
-        {
-            title: "TigerMarket",
-            description: "A AI-augmented marketplace app for Princeton students.",
-            skills: ["React", "Express", "NodeJS", "Full Stack Development", "AI Engineering"],
-            video: nlpVideo,
-            links: {
-                website: "https://tigermarket-f7555a069d76.herokuapp.com/",
-            }
-        },
-        {
-            title: "Phonetic Sentiment Model",
-            description: "Demonstrated that English encodes sentiment within the phonetic pronunciation of words, a proof of concept for a lightweight NLP smart-sentiment model.",
-            skills: ["Python", "NLP", "Machine Learning", "Research", "Data Analysis"],
-            video: nlpVideo,
-            links: {
-                github: "https://github.com/AlexeiKorolev/NLP-Phonetic-Sentiment",
-            }
-        },
-        {
-            title: "Forecasting Starcraft II Victories",
-            description: "Used LSTM neural networks to predict Starcraft II match outcomes with 92% accuracy, beating past research by almost 10%.",
-            skills: ["Python", "RNNs", "Machine Learning", "Data Wrangling"],
-            video: smlVideo,
-            links: {
-                github: "https://github.com/AlexeiKorolev/Starcraft-LSTM-Prediction",
-            }
-        },
-        {
-            title: "Homogenous Gas Simulation Engine",
-            description: "Designed an optimized C++ homogenous gas engine, beating a Python-based one by 1000% in speed. Modeled accurate particle collisions and derived the Boltzman Distribution via sim.",
-            skills: ["C++", "Python", "Simulation", "Optimization", "Physics"],
-            video: particleVideo,
-            links: {
-                github: "https://github.com/AlexeiKorolev/Gas-Simulation",
-            }
-        },
-        {
-            title: "This Profile",
-            description: "Designed an animated react profile without templates. Let my love for coffee and clean design shine through.",
-            skills: ["React", "JavaScript", "CSS", "Design"],
-            video: profileVideo,
-            links: {
-                website: "/",
-            }
-        }
-
-        // Add more projects...
-    ];
-    return (
-        <section className="projects-section">
-            <h2 className="section-title" id="projects">Featured Projects</h2>
-            <div className="projects-container">
-                {projects.map((project, index) => (
-                    <ProjectCard key={index} {...project} />
-                ))}
-            </div>
-            <div className="more-projects">
-                <a 
-                    href="https://github.com/AlexeiKorolev" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="github-link"
-                >
-                    <i className="fab fa-github"></i>
-                    For more projects, visit my GitHub
-                </a>
-            </div>
-        </section>
-    );
-};
+        <a
+            className="section-more"
+            href="https://github.com/AlexeiKorolev"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <i className="fab fa-github"></i> More on GitHub
+        </a>
+    </div>
+);
 
 export default Projects;

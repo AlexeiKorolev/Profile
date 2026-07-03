@@ -1,10 +1,10 @@
 
 export const THREASH = 300;
 export const phrases = [
-    "Data Scientist",
-    "Developer",
-    "AI Researcher",
-    "Technology Enthusiast"
+    "Software Engineer",
+    "ML Researcher",
+    "CS + ML @ Princeton",
+    "Likes Hard Problems"
 ];
 
 export const customPhrases = [

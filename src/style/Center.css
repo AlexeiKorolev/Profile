@@ -1,0 +1,132 @@
+.center-panel {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3.5rem 1.5rem;
+    box-sizing: border-box;
+    background-color: var(--background-color);
+}
+
+.center-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 620px;
+    animation: centerFade 0.9s ease;
+}
+
+@keyframes centerFade {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.center-photo {
+    width: clamp(120px, 18vh, 180px);
+    height: clamp(120px, 18vh, 180px);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-neutral);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.center-name {
+    margin: 1rem 0 0.2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.center-typing {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 2.4vw, 1.3rem);
+    color: var(--text-color);
+    min-height: 1.6em;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+}
+
+.center-edu {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 1.1rem;
+}
+
+.center-edu-logo {
+    height: 42px;
+    width: auto;
+}
+
+.center-edu-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+.center-edu-text span:first-child {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.center-edu-text span:last-child {
+    font-size: 0.85rem;
+    color: var(--secondary-neutral);
+}
+
+.center-bio {
+    margin: 1.1rem 0 0;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.02rem);
+    line-height: 1.55;
+    color: var(--text-color);
+}
+
+.center-links {
+    display: flex;
+    gap: 1.4rem;
+    margin-top: 1.2rem;
+}
+
+.center-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.center-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.center-footnote {
+    margin-top: 1.3rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    color: var(--secondary-neutral);
+}
+
+@media (max-height: 700px), (max-width: 600px) {
+    .center-panel { padding: 3.2rem 1.2rem; }
+    .center-bio { font-size: 0.85rem; line-height: 1.45; }
+    .center-footnote { margin-top: 0.8rem; }
+    .center-edu-logo { height: 34px; }
+}

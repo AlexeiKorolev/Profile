@@ -1,183 +1,129 @@
-import React, { useState, useEffect } from 'react';
-import '../style/Experience.css';
-import '../style/App.css';
-import { useInView } from 'react-intersection-observer';
+import React, { useState } from 'react';
+import '../style/Sections.css';
 
-
-const ExperienceCard = ({ role, company, period, description, skills, detailedSkills, logo }) => {
-    const [isHovered, setIsHovered] = useState(false);
-    const [flipper, setFlipper] = useState(false);
-    const { ref, inView } = useInView({
-        threshold: 0.2,
-        triggerOnce: true
-    });
-
-    useEffect(() => {
-        const blurElement = document.querySelector('.blur-er');
-        if (blurElement) {
-            if (isHovered) {
-                blurElement.classList.add('active');
-            } else {
-                blurElement.classList.remove('active');
-            }
-        }
-    }, [isHovered, flipper]);
-
+const Logo = ({ company, logo }) => {
+    const [failed, setFailed] = useState(false);
+    if (!logo || failed) {
+        const initials = company
+            .split(/[\s-]+/)
+            .slice(0, 2)
+            .map((w) => w[0])
+            .join('')
+            .toUpperCase();
+        return <div className="row-logo monogram">{initials}</div>;
+    }
     return (
-        <div ref={ref} className={`experience-card-wrapper ${inView ? 'visible' : ''}`}>
-        
-            <div 
-                className="experience-card"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                onMouseMove={() => setFlipper(!flipper)}
+        <img
+            src={logo}
+            alt={`${company} logo`}
+            className="row-logo"
+            loading="lazy"
+            onError={() => setFailed(true)}
+        />
+    );
+};
 
-            >
-                <div className="card-content">
-                
-                    <div className="logo-container">
-                        <img src={logo} alt={`${company} logo`} className="company-logo" />
-                    </div>
-                    <div className="content-container">
-                        <div className="experience-header">
-                            <div className="experience-info">
-                                <h3 className="role">{role}</h3>
-                                <span className="company">{company}</span>
-                                <span className="period">{period}</span>
-                            </div>
+const experiences = [
+    {
+        role: 'Software Engineering Intern',
+        company: 'Merck',
+        period: 'Summer 2026',
+        description: 'Software engineering with Merck\'s IT organization, building internal tooling at enterprise scale.',
+        skills: ['Software Engineering', 'Enterprise IT'],
+    },
+    {
+        role: 'Machine Learning Researcher',
+        company: 'NASA Ames Research Center',
+        period: '2025 – Present',
+        description: 'Working with the Ames Coronagraph Experiment (ACE) team on reinforcement learning and lightweight ML for wavefront control — a new way to drive deformable mirrors in space-telescope coronagraphs.',
+        skills: ['Reinforcement Learning', 'Python', 'Optics'],
+        logo: 'https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg',
+    },
+    {
+        role: 'Software Engineering Intern',
+        company: 'Nuro',
+        period: 'Summer 2025',
+        description: 'Software engineering at Nuro, an autonomous driving company, working on infrastructure for self-driving systems.',
+        skills: ['C++', 'Python', 'Autonomous Vehicles'],
+    },
+    {
+        role: 'Data Science Intern',
+        company: 'Lycoming Engines',
+        period: 'Spring 2025',
+        description: 'Built machine learning models to predict aircraft engine failures, combining signal processing, mathematics, and physics.',
+        skills: ['Python', 'Machine Learning', 'Forecasting'],
+        logo: 'https://www.lycoming.com/themes/custom/themekit/logo.svg',
+    },
+    {
+        role: 'Data Science Intern',
+        company: 'WIT Sports',
+        period: 'Jan – Feb 2025',
+        description: 'Revamped Fan AI, an algorithm predicting fan engagement, and built an in-house database of US zipcode prosperity scores.',
+        skills: ['Python', 'SQL', 'Feature Engineering'],
+    },
+    {
+        role: 'Data Research Intern',
+        company: 'Princeton University',
+        period: 'Summer 2024',
+        description: 'Large-scale coarse-grained MD simulations of chromatin tension on the Princeton computing cluster (Jacobs Lab, Chemistry).',
+        skills: ['C', 'Python', 'Simulation'],
+        logo: 'https://www.princeton.edu/themes/custom/hobbes/logo.svg',
+    },
+    {
+        role: 'Software Engineering Intern',
+        company: 'Orgo',
+        period: 'Summers 2023 & 2024',
+        description: 'Built a customer-invite system boosting user acquisition by 25–50%, plus infrastructure for an "import from Google" feature.',
+        skills: ['React Native', 'Firebase', 'Google Cloud'],
+    },
+    {
+        role: 'App Developer Intern',
+        company: 'Huntington Breast Cancer Action Coalition',
+        period: 'Summer 2023',
+        description: 'Built a lifestyle-tracking Android app for cancer prevention with a Hive-backed storage system.',
+        skills: ['Android', 'Java', 'Hive'],
+    },
+    {
+        role: 'Game Developer Intern',
+        company: 'BTU Games',
+        period: '2022 – 2023',
+        description: 'C++ backend in Unreal Engine: OAuth 2.0 multi-platform login and a character movement framework for a soft-body physics engine.',
+        skills: ['C++', 'Unreal Engine', 'OAuth 2.0'],
+        logo: 'https://btugames.net/images/btu_logo.svg',
+    },
+    {
+        role: 'AI Researcher',
+        company: 'Rutgers GSET',
+        period: 'Summer 2022',
+        description: 'Led model development for an IEEE paper on biometric authentication via structure-borne sound, reaching >92.5% accuracy.',
+        skills: ['MATLAB', 'Machine Learning', 'Signal Processing'],
+    },
+];
+
+const Experience = () => (
+    <div className="section-inner">
+        <h2 className="section-heading">Experience</h2>
+        <div className="row-grid">
+            {experiences.map((exp, i) => (
+                <article className="info-row" key={i}>
+                    <Logo company={exp.company} logo={exp.logo} />
+                    <div className="row-body">
+                        <div className="row-top">
+                            <h3 className="row-title">{exp.role}</h3>
+                            <span className="row-period">{exp.period}</span>
                         </div>
-                        <div className="skills">
-                            {skills.map((skill, index) => (
-                                <span key={index} className="skill-pill">{skill}</span>
+                        <span className="row-subtitle">{exp.company}</span>
+                        <p className="row-text">{exp.description}</p>
+                        <div className="pill-row">
+                            {exp.skills.map((s, j) => (
+                                <span className="pill" key={j}>{s}</span>
                             ))}
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <div className={`detailed-card ${isHovered ? 'active' : ''}`}>
-                <div className="detailed-content">
-                    <div className="detailed-header">
-                        <img src={logo} alt={`${company} logo`} className="detailed-logo" />
-                        <div className="detailed-title">
-                            <h2>{role}</h2>
-                            <h3>{company}</h3>
-                            <p className="detailed-period">{period}</p>
-                        </div>
-                    </div>
-                    <div className="detailed-description">
-                        <p>{description}</p>
-                    </div>
-                    <div className="detailed-skills">
-                        <h4>Technologies & Skills</h4>
-                        <div className="detailed-skills-list">
-                            {detailedSkills.map((skill, index) => (
-                                <span key={index} className="skill-pill">{skill}</span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </article>
+            ))}
         </div>
-    );
-};
-
-const Experience = () => {
-
-    const experiences = [
-        {
-            role: "Data Science Intern",
-            company: "Lycoming Engines",
-            period: "Feb 2025 - Present",
-            description: "Developed machine learning models to predict engine failures. Built predictive engine behavior models using signal processing, mathematics, and physics.",
-            skills: ["Python", "Machine Learning", "Forecasting"],
-            detailedSkills: ["Python", "Data Analysis", "SQL", "Data Preprocessing", "Feature Extraction", "Predictive Physics", "Forecasting", "SciKit-Learn", "Tensorflow"],
-            logo: "https://www.lycoming.com/themes/custom/themekit/logo.svg"
-        },
-        {
-            role: "Data Science Intern",
-            company: "WIT Sports",
-            period: "Jan 2025 - Feb 2025",
-            description: "Revamped Fan AI, an algorithm that predicts how engaged a fan is with their sports team. Augmented the feature engineering process and built an in-house comprehensive database of zipcode prosperity scores in the US.",
-            skills: ["Python", "NodeJS", "SQL"],
-            detailedSkills: ["Python", "Data Analysis", "SQL", "Database Design", "Web Scraping", "AI Ranking", "Probability"],
-
-            logo: "https://media.licdn.com/dms/image/v2/C4E0BAQE9LCAou1mpHw/company-logo_200_200/company-logo_200_200/0/1675090608394/wit_sports_logo?e=1749686400&v=beta&t=hDNQ-m9Xc7ix28282Oi2Zc06Gz7VxTnngzxLFoZb614"
-        },
-        {
-            role: "Software Engineering Intern",
-            company: "Orgo",
-            period: "Summers 2023, 2024",
-            description: "Created a new customer invites system, boosting user acquisition by up to 25-50% using React and Firebase. Added the infrastructure necessary for an \"import from Google\" feature.",
-            skills: ["React", "Firebase", "Machine Learning"],
-            detailedSkills: ["React-Native", "Firebase", "Machine Learning", "Data Pipelines", "Google Cloud Functions", "Google APIs"],
-
-            logo: "https://media.licdn.com/dms/image/v2/D4E0BAQGLKyBrDo6cwg/company-logo_200_200/company-logo_200_200/0/1719832434601?e=1749686400&v=beta&t=LRUiiejHzKhaX7X5kE6_Wsj-COfZDRlCSlTuctOkWEs"
-        },
-        {
-            role: "Data Research Intern",
-            company: "Princeton University",
-            period: "Summer 2024",
-            description: "Designed large-data simulations through the Princeton Computing Cluster to conduct quantitative research. Designed and tested a Python program for calculating and visualizing molecular tension, yielding an accurate way to quantify induced simulation tension on chromatin.",
-            skills: ["C", "Python", "Simulation"],
-            detailedSkills: ["C", "Python", "Data Analysis", "Data Visualization", "Simulation", "Quantitative Research", "Physics"],
-
-            logo: "https://www.princeton.edu/themes/custom/hobbes/logo.svg"
-        },
-        {
-            role: "App Developer Intern",
-            company: "Huntington Breast Cancer Action Coalition",
-            period: "Summer 2023",
-            description: "Created a lifestyle-watching app that helps prevent up to 40% of cancer cases through habit-changing. Designed a backend storage system through Hive. Assisted the front-end team with animation design.",
-            skills: ["Android Studio", "Java", "Hive"],
-            detailedSkills: ["Android Studio", "Java", "Hive", "Data Storage", "UI Design"],
-
-            logo: "https://images.squarespace-cdn.com/content/v1/6424aaf304d49156a143702f/8bc2339f-0353-4e83-9256-917819fcdb89/Untitled+design.png?format=1500w"
-        },
-        {
-            role: "Game Developer Intern",
-            company: "BTU Games",
-            period: "Nov 2022 - May 2023",
-            description: "Designed C++ backend code in Unreal engine that integrated the OAuth 2.0 plugin for multi-platform login capabilities. Created and implemented the character movement framework to interact seamlessly with a soft-body physics engine.",
-            skills: ["C++", "Unreal Engine", "OAuth 2.0"],
-            detailedSkills: ["C++", "Unreal Engine", "OAuth 2.0", "Lyra", "Soft-Body Physics", "Game Design"],
-
-            logo: "https://btugames.net/images/btu_logo.svg"
-        },
-        {
-            role: "Programming Instructor",
-            company: "Code Ninjas",
-            period: "Nov 2022 - May 2023",
-            description: "Taught computer science and mathematics concepts in understandable ways (ex. 2D array representation, motion physics, etc.) Was called \"Mister\" for the first time. ",
-            skills: ["Python", "Education"],
-            detailedSkills: ["Python", "Education", "Curriculum Design", "Lesson Planning", "Student Engagement", "Classroom Management"],
-
-            logo: "https://www.codeninjas.com/hubfs/Group%201.svg"
-        } ,
-        {
-            role: "AI Researcher",
-            company: "Rutgers Unviersity - GSET",
-            period: "Summer 2022",
-            description: "Co-authored an IEEE research paper investigating a novel AI application in mobile device security. Led the AI model development of the project, engineering models that achieved >92.5% accuracy without overfitting. Designed a MATLAB program to extrapolate unique statistical properties of structure-borne sound recordings.",
-            skills: ["MATLAB", "Python", "Machine Learning"],
-            detailedSkills: ["MATLAB", "Python", "Machine Learning", "Signal Processing", "Research", "Feature Engineering", "Structure-borne Sound"],
-
-            logo: "https://media.licdn.com/dms/image/v2/C4E0BAQHWA2B8LSUgqA/company-logo_200_200/company-logo_200_200/0/1630570927509/new_jersey_governor_s_school_of_engineering_technology_logo?e=2147483647&v=beta&t=zs4LorrPf7tuKb5OGljXPC2JIJ1Y6zP1XoMf9XOEh9A"
-        }
-    ];
-
-    return (
-        <section className="experience-section" id="experience">
-        
-            <h2 className="section-title">Recent Experiences</h2>
-            <div className="experience-container">
-                {experiences.map((exp, index) => (
-                    <ExperienceCard key={index} {...exp} />
-                ))}
-            </div>
-            <div className='blur-er'></div>
-        </section>
-    );
-};
+    </div>
+);
 
 export default Experience;
