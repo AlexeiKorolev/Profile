@@ -19,10 +19,10 @@ const HASH_TO_VIEW = Object.fromEntries(
     Object.entries(VIEW_TO_HASH).map(([view, hash]) => [hash, view])
 );
 const ARROW_ZONE = 150;      // px from edge where the arrow appears; clicks there navigate
-const NAV_COOLDOWN = 380;    // ms between navigations (just past the slide)
+const NAV_COOLDOWN = 900;    // ms between navigations
 const SWIPE_MIN = 60;        // px minimum swipe distance
-const WHEEL_THRESHOLD = 280; // accumulated wheel delta that triggers navigation
-const WHEEL_COOLDOWN = 380;  // ms wheel is ignored after a navigation (≈ slide length)
+const WHEEL_THRESHOLD = 140; // accumulated wheel delta that triggers navigation
+const WHEEL_COOLDOWN = 700;  // ms wheel is ignored after a navigation (absorbs inertia)
 
 const PlusNav = () => {
     const [view, setView] = useState(() => HASH_TO_VIEW[window.location.hash] || 'center');
