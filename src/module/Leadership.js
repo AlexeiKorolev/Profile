@@ -7,7 +7,7 @@ const leadershipRoles = [
     {
         title: 'Co-President',
         organization: 'Princeton Autonomous Vehicle Engineering (PAVE)',
-        period: '2023 – Present',
+        period: '2023 – 2026',
         description: 'Co-president of Princeton\'s top undergraduate autonomous vehicle engineering club, after leading its software & computer vision team.',
         impact: [
             'Led 25 members across 4 subteams building an AI driver — depth sensing, object detection, custom image-embedding models, and microcontrollers',
@@ -21,7 +21,7 @@ const leadershipRoles = [
     {
         title: 'Head of Partnerships',
         organization: 'TigerLaunch',
-        period: '2023 – Present',
+        period: '2023 – 2025',
         description: 'Partnerships lead at the world\'s largest student-run entrepreneurship competition.',
         impact: [
             'Led a team of 6 and secured >$90K in sponsorships for the 2024–25 season',

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import '../style/Sections.css';
 
-const Logo = ({ company, logo }) => {
+const Logo = ({ company, logo, className = 'row-logo' }) => {
     const [failed, setFailed] = useState(false);
     if (!logo || failed) {
         const initials = company
@@ -10,13 +10,13 @@ const Logo = ({ company, logo }) => {
             .map((w) => w[0])
             .join('')
             .toUpperCase();
-        return <div className="row-logo monogram">{initials}</div>;
+        return <div className={`${className} monogram`}>{initials}</div>;
     }
     return (
         <img
             src={logo}
             alt={`${company} logo`}
-            className="row-logo"
+            className={className}
             loading="lazy"
             onError={() => setFailed(true)}
         />
@@ -31,6 +31,7 @@ const experiences = [
         description: 'Working on content farming metrics — measuring and modeling mass-produced content on the platform.',
         skills: ['Python', 'SQL', 'Data Science'],
         logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg',
+        featured: true,
     },
     {
         role: 'Machine Learning Researcher',
@@ -39,6 +40,7 @@ const experiences = [
         description: 'Working with the Ames Coronagraph Experiment (ACE) team on reinforcement learning and lightweight ML for wavefront control — a new way to drive deformable mirrors in space-telescope coronagraphs.',
         skills: ['Reinforcement Learning', 'Python', 'Optics'],
         logo: 'https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg',
+        featured: true,
     },
     {
         role: 'Software Engineering Intern',
@@ -46,6 +48,7 @@ const experiences = [
         period: 'Winter 2026',
         description: 'Developed a novel camera–LiDAR calibration method for autonomous vehicles, combining learned visual features with geometric optimization for accurate sensor alignment without structured calibration targets.',
         skills: ['C++', 'Computer Vision', 'Sensor Calibration'],
+        featured: true,
     },
     {
         role: 'AI Intern',
@@ -86,8 +89,12 @@ const experiences = [
     },
 ];
 
-// Scrolls horizontally so its axis never lines up with the vertical
-// wheel/swipe gesture that navigates back to the hub.
+const featured = experiences.filter((e) => e.featured);
+const rest = experiences.filter((e) => !e.featured);
+
+// The flagship roles sit centered up top for primary attention; the
+// remaining roles live in a horizontal scroll below. The scroll axis never
+// lines up with the vertical wheel/swipe gesture that navigates to the hub.
 const Experience = () => {
     const scrollRef = useRef(null);
     const drag = useRef(null);
@@ -105,6 +112,28 @@ const Experience = () => {
     return (
         <div className="xsection">
             <h2 className="section-heading">Experience</h2>
+
+            <div className="featured-band">
+                {featured.map((exp, i) => (
+                    <article className="featured-card" key={i}>
+                        <div className="featured-top">
+                            <Logo company={exp.company} logo={exp.logo} className="featured-logo" />
+                            <span className="featured-period">{exp.period}</span>
+                        </div>
+                        <h3 className="featured-role">{exp.role}</h3>
+                        <span className="featured-company">{exp.company}</span>
+                        <p className="featured-text">{exp.description}</p>
+                        <div className="pill-row">
+                            {exp.skills.map((s, j) => (
+                                <span className="pill" key={j}>{s}</span>
+                            ))}
+                        </div>
+                    </article>
+                ))}
+            </div>
+
+            <p className="subband-label">More experience — drag sideways</p>
+
             <div
                 className="h-scroll"
                 ref={scrollRef}
@@ -113,8 +142,8 @@ const Experience = () => {
                 onMouseUp={endDrag}
                 onMouseLeave={endDrag}
             >
-                <div className="h-grid">
-                    {experiences.map((exp, i) => (
+                <div className="h-grid h-grid-single">
+                    {rest.map((exp, i) => (
                         <article className="info-row" key={i}>
                             <Logo company={exp.company} logo={exp.logo} />
                             <div className="row-body">
@@ -134,7 +163,6 @@ const Experience = () => {
                     ))}
                 </div>
             </div>
-            <p className="x-hint">drag or scroll sideways</p>
         </div>
     );
 };

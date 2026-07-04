@@ -24,7 +24,7 @@ const papers = [
         year: '2024',
         authors: 'A. Korolev, advised by Prof. William Jacobs',
         description: 'Designed and validated a Python tool for calculating and visualizing molecular tension in large-scale chromatin simulations run on the Princeton computing cluster.',
-        links: { website: 'https://mediacentral.princeton.edu/media/ReMatch++Intern+-+Alexei+Korolev/1_porp4z64/349062372' },
+        links: { website: 'https://arxiv.org/abs/2606.02275v1' },
     },
     {
         title: 'A Secure and Reliable Mobile Authentication Alternative Utilizing Hand Structure',
@@ -39,7 +39,7 @@ const papers = [
         venue: 'Independent research',
         year: '2024',
         authors: 'A. Korolev',
-        description: 'Demonstrated that English encodes sentiment within the phonetics of words — a proof of concept for extremely lightweight sentiment models.',
+        description: 'Demonstrated that English encodes sentiment within the phonetics of words. It\'s a proof of concept for extremely lightweight sentiment models.',
         links: { github: 'https://github.com/AlexeiKorolev/NLP-Phonetic-Sentiment' },
     },
 ];
