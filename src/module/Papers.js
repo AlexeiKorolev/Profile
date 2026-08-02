@@ -1,7 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../style/Sections.css';
 
 const papers = [
+    {
+        title: 'Othello-GPT: World Model Emergence and Drift During Training',
+        venue: 'Independent research · UW Hyak (klone) compute',
+        year: '2026',
+        authors: 'A. Korolev',
+        description: 'Traced when the board world model appears during training and whether it is stable once formed. The representation is decodable by epoch 2 and causally mature by epoch 4, but continues to drift for the remainder of the run, with a measurable asymmetry between early and late probes.',
+        links: { report: '/othello-gpt' },
+    },
     {
         title: 'Lightweight Machine Learning for Wavefront Control in Coronagraphs',
         venue: 'NASA Ames Coronagraph Experiment (ACE) collaboration',
@@ -58,6 +67,11 @@ const Papers = () => (
                     <span className="paper-authors">{paper.authors}</span>
                     <p className="row-text">{paper.description}</p>
                     <div className="link-row">
+                        {paper.links.report && (
+                            <Link className="link-strong" to={paper.links.report}>
+                                <i className="fas fa-book-open"></i> Read the report
+                            </Link>
+                        )}
                         {paper.links.website && (
                             <a href={paper.links.website} target="_blank" rel="noopener noreferrer">
                                 <i className="fas fa-external-link-alt"></i> View

@@ -137,6 +137,37 @@
 
 .link-row a:hover { color: var(--primary-color); }
 
+/* internal link into a full writeup page — carries more weight than a repo link */
+.link-row a.link-strong {
+    padding: 0.28rem 0.7rem;
+    margin: -0.28rem 0;
+    border-radius: 999px;
+    background: var(--primary-color);
+    color: #fff;
+    transition: background 0.25s ease;
+}
+
+.link-row a.link-strong:hover { background: var(--accent-color); color: #fff; }
+
+.tile-flag {
+    display: inline-block;
+    margin-bottom: 0.45rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid var(--primary-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+}
+
+.project-tile-featured {
+    border-color: rgba(185, 43, 39, 0.45);
+    background: rgba(255, 255, 255, 0.75);
+}
+
 /* ---------- experience (horizontal scroll) ---------- */
 
 .xsection {

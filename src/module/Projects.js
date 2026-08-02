@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../style/Sections.css';
 import nlpVideo from '../assets/videos/nlp.mp4';
 import smlVideo from '../assets/videos/SML 310.mp4';
@@ -6,6 +7,13 @@ import particleVideo from '../assets/videos/Particle Sim.mp4';
 import profileVideo from '../assets/videos/Profile.mp4';
 
 const projects = [
+    {
+        title: 'Othello-GPT: World Model Emergence and Drift',
+        description: 'A study of when the board world model appears during training and how stable it is afterward. It becomes decodable by epoch 2 and causally mature by epoch 4, after which further probe improvement yields no causal gain, while the representation continues to drift for the rest of the run.',
+        skills: ['PyTorch', 'Interpretability', 'Transformers'],
+        links: { report: '/othello-gpt' },
+        featured: true,
+    },
     {
         title: 'RL Wavefront Control for Space Telescopes',
         description: 'Reinforcement learning models for driving deformable mirrors in coronagraphs, built with the NASA Ames Coronagraph Experiment team.',
@@ -61,12 +69,12 @@ const projects = [
     },
 ];
 
-const ProjectCard = ({ title, description, video, skills, links }) => {
+const ProjectCard = ({ title, description, video, skills, links, featured }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
         <article
-            className="project-tile"
+            className={`project-tile ${featured ? 'project-tile-featured' : ''}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -76,6 +84,7 @@ const ProjectCard = ({ title, description, video, skills, links }) => {
                 </video>
             )}
             <div className="tile-content">
+                {featured && <span className="tile-flag">Featured research</span>}
                 <h3 className="row-title">{title}</h3>
                 <p className="row-text">{description}</p>
                 <div className="pill-row">
@@ -84,6 +93,11 @@ const ProjectCard = ({ title, description, video, skills, links }) => {
                     ))}
                 </div>
                 <div className="link-row">
+                    {links.report && (
+                        <Link className="link-strong" to={links.report}>
+                            <i className="fas fa-book-open"></i> Read the report
+                        </Link>
+                    )}
                     {links.github && (
                         <a href={links.github} target="_blank" rel="noopener noreferrer">
                             <i className="fab fa-github"></i> GitHub
