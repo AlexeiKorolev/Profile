@@ -28,7 +28,7 @@ const experiences = [
         role: 'Data Science Intern',
         company: 'Meta',
         period: 'Summer 2026',
-        description: 'Working on content farming metrics — measuring and modeling mass-produced content on the platform.',
+        description: 'Worked on content farming metrics — measuring and modeling mass-produced content on the platform.',
         skills: ['Python', 'SQL', 'Data Science'],
         logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg',
         featured: true,
