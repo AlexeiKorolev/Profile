@@ -8,8 +8,8 @@ const papers = [
         venue: 'Independent research · UW Hyak (klone) compute',
         year: '2026',
         authors: 'A. Korolev',
-        description: 'Traced when the board world model appears during training and whether it is stable once formed. The representation is decodable by epoch 2 and causally mature by epoch 4, but continues to drift for the remainder of the run, with a measurable asymmetry between early and late probes.',
-        links: { report: '/othello-gpt' },
+        description: 'Traced when the board world model appears during training and whether it is stable once formed. The board is decodable by epoch 2 and causally mature by epoch 4; afterwards probe accuracy keeps improving with no causal gain, and the best linear readout keeps drifting, so a probe describes one checkpoint rather than the model.',
+        links: { report: '/othello-gpt', github: 'https://github.com/AlexeiKorolev/othello-world-model' },
     },
     {
         title: 'Lightweight Machine Learning for Wavefront Control in Coronagraphs',
