@@ -22,13 +22,12 @@ const headline = [
     {
         stat: '0.53',
         label: 'probe agreement, epoch 2 vs epoch 20',
-        note: 'Mean cosine between probe directions at the two checkpoints. Two probes trained at the same epoch with different seeds agree at 0.999, so this is a property of the model.',
+        note: 'Mean cosine between probe directions at the two checkpoints. Two probes trained at the same epoch with different seeds agree at 0.999, so this is not probe-fitting noise.',
     },
     {
-        stat: '26.3% vs 15.2%',
-        long: true,
-        label: 'asymmetric transfer error',
-        note: 'A late probe applied to early activations is worse than an early probe applied to late activations. Late probes are more specialised to their own checkpoint.',
+        stat: '~51%',
+        label: 'of the way to ideal edit following',
+        note: 'Editing the board representation moves the model about halfway between oracle bounds computed from the game engine. The board is used, but only partially.',
     },
 ];
 
@@ -493,12 +492,14 @@ const OthelloReport = () => {
                         probe that was never aimed at anything.
                     </p>
                     <p>
-                        The transfer error is also <strong>asymmetric</strong>. A late probe applied
-                        to early activations performs worse than an early probe applied to late
-                        activations, 26.3% against 15.2% on raw logits. The cosine matrix in Figure 4
-                        is symmetric by construction and cannot show this. The asymmetry indicates
-                        that late probes are more specialised to their own checkpoint than early
-                        probes are.
+                        What this does <strong>not</strong> establish is that the model's encoding of
+                        the board itself rotates. A discriminative probe's direction depends on both
+                        where the board is written and on the activation covariance, and that
+                        covariance changes enormously over the same epochs (activation norms grow
+                        7 to 14 times). A fixed encoding under a drifting covariance would produce the
+                        same signature, and the seed control cannot separate the two because both
+                        probes see identical activations. Comparing generative class-mean directions
+                        on normalised activations would settle it; that test has not been run yet.
                     </p>
                     <Figure
                         wide
@@ -594,8 +595,8 @@ const OthelloReport = () => {
                     <h2>4. Conclusion</h2>
                     <p>
                         <strong>
-                            The world model representation emerges early in training, and it continues
-                            to drift for the rest of the run.
+                            The world model emerges early in training, and the best linear readout of
+                            it keeps drifting for the rest of the run.
                         </strong>{' '}
                         The board becomes decodable within two epochs of a twenty epoch schedule, and
                         the model's causal reliance on it is complete by epoch 4. The remaining
@@ -604,21 +605,15 @@ const OthelloReport = () => {
                         refinement that follows it is causally inert.
                     </p>
                     <p>
-                        The representation does not settle once it has formed. Probe directions at
+                        The readout does not settle once the board has formed. Probe directions at
                         epoch 2 and epoch 20 agree at a cosine of 0.53, against a same epoch seed
                         control of 0.999, and the decay between checkpoints is smooth and monotone.
                         Most of the apparent transfer collapse is a scale effect and disappears under
                         recalibration, but a real difference of roughly eight times the own-epoch
-                        error remains after correction. Decodability plateaus while the underlying
-                        encoding keeps changing slowly. A probe is therefore a statement about one
-                        checkpoint rather than about the model in general.
-                    </p>
-                    <p>
-                        The drift is also <strong>slightly asymmetric</strong>. Probes trained on late
-                        representations transfer to early activations worse than probes trained on
-                        early representations transfer to late ones, 26.3% against 15.2% on raw
-                        logits. Late representations appear to be more specialised, and an early probe
-                        retains partial validity later in training in a way the reverse does not.
+                        error remains after correction. A probe is therefore a statement about one
+                        checkpoint rather than about the model in general. Whether the encoding
+                        itself moves, or only the optimal readout of it under a changing activation
+                        covariance, is still open.
                     </p>
                     <p>
                         Separately, the causal test gives a calibrated figure for a claim that was
@@ -671,6 +666,11 @@ const OthelloReport = () => {
                             Determine why causal efficacy stops at roughly 51%. The remaining half may
                             be a limit on probe quality, or the model may read the board through a
                             pathway the edit does not reach.
+                        </li>
+                        <li>
+                            Separate readout drift from encoding drift by comparing generative
+                            class-mean directions on normalised activations, which do not depend on
+                            the activation covariance.
                         </li>
                         <li>
                             Train multiple seeds to test whether the drift converges to a seed
