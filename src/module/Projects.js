@@ -8,10 +8,17 @@ import profileVideo from '../assets/videos/Profile.mp4';
 
 const projects = [
     {
+        title: 'Speak-and-Draw (Senior Thesis)',
+        description: 'One model that talks and draws at the same time, like a teacher at a whiteboard. Building a speech + pen-stroke benchmark, a dot-canvas testbed for comparing action interfaces, and parallel speech/pen streams on top of a full-duplex speech model. In progress.',
+        skills: ['PyTorch', 'Multimodal', 'Speech', 'VLMs'],
+        links: { github: 'https://github.com/AlexeiKorolev/speak-and-draw' },
+        featured: true,
+    },
+    {
         title: 'Othello-GPT: World Model Emergence and Drift',
-        description: 'A study of when the board world model appears during training and how stable it is afterward. It becomes decodable by epoch 2 and causally mature by epoch 4, after which further probe improvement yields no causal gain, while the representation continues to drift for the rest of the run.',
+        description: 'A study of when the board world model appears during training and how stable it is afterward. It becomes decodable by epoch 2 and causally mature by epoch 4, after which further probe improvement yields no causal gain. The best linear readout of the board keeps drifting for the rest of the run.',
         skills: ['PyTorch', 'Interpretability', 'Transformers'],
-        links: { report: '/othello-gpt' },
+        links: { report: '/othello-gpt', github: 'https://github.com/AlexeiKorolev/othello-world-model' },
         featured: true,
     },
     {
