@@ -22,9 +22,10 @@ const Center = () => {
                     </div>
                 </div>
                 <p className="center-bio">
-                    Hi! I'm currently interning at Meta and researching machine learning for
-                    space-telescope wavefront control. Previously at
-                    Nuro, Kenvue, Lycoming Engines, and a few startups. I build things and solve problems. 
+                    I work across ML research and engineering. Right now I'm writing my senior
+                    thesis on a model that speaks and draws at the same time, and researching
+                    machine learning for space-telescope wavefront control with NASA Ames.
+                    Previously at Meta, Nuro, Kenvue, Lycoming Engines, and a few startups.
                 </p>
                 <div className="center-links">
                     <a href="mailto:alexei.korolev@princeton.edu" aria-label="Email">
